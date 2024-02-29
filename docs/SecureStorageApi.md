@@ -1,0 +1,204 @@
+# monday_sdk.SecureStorageApi
+
+All URIs are relative to *http://localhost:59999*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**delete_secure_storage**](SecureStorageApi.md#delete_secure_storage) | **DELETE** /secure-storage/{key} | 
+[**get_secure_storage**](SecureStorageApi.md#get_secure_storage) | **GET** /secure-storage/{key} | 
+[**put_secure_storage**](SecureStorageApi.md#put_secure_storage) | **PUT** /secure-storage/{key} | 
+
+
+# **delete_secure_storage**
+> delete_secure_storage(key)
+
+
+
+### Example
+
+
+```python
+import monday_sdk
+from monday_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:59999
+# See configuration.py for a list of all supported configuration parameters.
+configuration = monday_sdk.Configuration(
+    host = "http://localhost:59999"
+)
+
+
+# Enter a context with an instance of the API client
+with monday_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = monday_sdk.SecureStorageApi(api_client)
+    key = 'key_example' # str | 
+
+    try:
+        api_instance.delete_secure_storage(key)
+    except Exception as e:
+        print("Exception when calling SecureStorageApi->delete_secure_storage: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **key** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Deleted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_secure_storage**
+> StorageDataContract get_secure_storage(key)
+
+
+
+### Example
+
+
+```python
+import monday_sdk
+from monday_sdk.models.storage_data_contract import StorageDataContract
+from monday_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:59999
+# See configuration.py for a list of all supported configuration parameters.
+configuration = monday_sdk.Configuration(
+    host = "http://localhost:59999"
+)
+
+
+# Enter a context with an instance of the API client
+with monday_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = monday_sdk.SecureStorageApi(api_client)
+    key = 'key_example' # str | 
+
+    try:
+        api_response = api_instance.get_secure_storage(key)
+        print("The response of SecureStorageApi->get_secure_storage:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SecureStorageApi->get_secure_storage: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **key** | **str**|  | 
+
+### Return type
+
+[**StorageDataContract**](StorageDataContract.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ok |  -  |
+**404** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_secure_storage**
+> put_secure_storage(key, storage_data_contract)
+
+
+
+### Example
+
+
+```python
+import monday_sdk
+from monday_sdk.models.storage_data_contract import StorageDataContract
+from monday_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:59999
+# See configuration.py for a list of all supported configuration parameters.
+configuration = monday_sdk.Configuration(
+    host = "http://localhost:59999"
+)
+
+
+# Enter a context with an instance of the API client
+with monday_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = monday_sdk.SecureStorageApi(api_client)
+    key = 'key_example' # str | 
+    storage_data_contract = monday_sdk.StorageDataContract() # StorageDataContract | 
+
+    try:
+        api_instance.put_secure_storage(key, storage_data_contract)
+    except Exception as e:
+        print("Exception when calling SecureStorageApi->put_secure_storage: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **key** | **str**|  | 
+ **storage_data_contract** | [**StorageDataContract**](StorageDataContract.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Created |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
