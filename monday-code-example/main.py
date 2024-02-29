@@ -16,7 +16,7 @@ from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost:59999
 # See configuration.py for a list of all supported configuration parameters.
-configuration = monday_sdk.Configuration(host="http://localhost:59999")
+configuration = monday_sdk.Configuration()
 
 app = Flask(__name__)
 
