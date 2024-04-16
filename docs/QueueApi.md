@@ -1,4 +1,4 @@
-# monday_sdk.QueueApi
+# monday_code.QueueApi
 
 All URIs are relative to *http://localhost:59999*
 
@@ -17,24 +17,24 @@ Method | HTTP request | Description
 
 
 ```python
-import monday_sdk
-from monday_sdk.models.publish_message_params import PublishMessageParams
-from monday_sdk.models.publish_message_response import PublishMessageResponse
-from monday_sdk.rest import ApiException
+import monday_code
+from monday_code.models.publish_message_params import PublishMessageParams
+from monday_code.models.publish_message_response import PublishMessageResponse
+from monday_code.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost:59999
 # See configuration.py for a list of all supported configuration parameters.
-configuration = monday_sdk.Configuration(
+configuration = monday_code.Configuration(
     host = "http://localhost:59999"
 )
 
 
 # Enter a context with an instance of the API client
-with monday_sdk.ApiClient(configuration) as api_client:
+with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = monday_sdk.QueueApi(api_client)
-    publish_message_params = monday_sdk.PublishMessageParams() # PublishMessageParams | 
+    api_instance = monday_code.QueueApi(api_client)
+    publish_message_params = monday_code.PublishMessageParams() # PublishMessageParams | 
 
     try:
         api_response = api_instance.publish_message(publish_message_params)
@@ -70,7 +70,7 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Ok |  -  |
+**200** | Success |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -83,24 +83,24 @@ No authorization required
 
 
 ```python
-import monday_sdk
-from monday_sdk.models.validate_secret_params import ValidateSecretParams
-from monday_sdk.models.validate_secret_response import ValidateSecretResponse
-from monday_sdk.rest import ApiException
+import monday_code
+from monday_code.models.validate_secret_params import ValidateSecretParams
+from monday_code.models.validate_secret_response import ValidateSecretResponse
+from monday_code.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost:59999
 # See configuration.py for a list of all supported configuration parameters.
-configuration = monday_sdk.Configuration(
+configuration = monday_code.Configuration(
     host = "http://localhost:59999"
 )
 
 
 # Enter a context with an instance of the API client
-with monday_sdk.ApiClient(configuration) as api_client:
+with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = monday_sdk.QueueApi(api_client)
-    validate_secret_params = monday_sdk.ValidateSecretParams() # ValidateSecretParams | 
+    api_instance = monday_code.QueueApi(api_client)
+    validate_secret_params = monday_code.ValidateSecretParams() # ValidateSecretParams | 
 
     try:
         api_response = api_instance.validate_secret(validate_secret_params)
@@ -136,7 +136,7 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Ok |  -  |
+**200** | Success |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

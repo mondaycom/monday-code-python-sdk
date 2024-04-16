@@ -1,4 +1,4 @@
-# monday_sdk.SecretApi
+# monday_code.SecretApi
 
 All URIs are relative to *http://localhost:59999*
 
@@ -16,21 +16,21 @@ Method | HTTP request | Description
 
 
 ```python
-import monday_sdk
-from monday_sdk.rest import ApiException
+import monday_code
+from monday_code.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost:59999
 # See configuration.py for a list of all supported configuration parameters.
-configuration = monday_sdk.Configuration(
+configuration = monday_code.Configuration(
     host = "http://localhost:59999"
 )
 
 
 # Enter a context with an instance of the API client
-with monday_sdk.ApiClient(configuration) as api_client:
+with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = monday_sdk.SecretApi(api_client)
+    api_instance = monday_code.SecretApi(api_client)
     name = 'name_example' # str | 
 
     try:

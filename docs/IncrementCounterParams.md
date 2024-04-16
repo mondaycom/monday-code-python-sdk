@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from monday_sdk.models.increment_counter_params import IncrementCounterParams
+from monday_code.models.increment_counter_params import IncrementCounterParams
 
 # TODO update the JSON string below
 json = "{}"

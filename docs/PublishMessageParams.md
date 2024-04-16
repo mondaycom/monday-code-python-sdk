@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from monday_sdk.models.publish_message_params import PublishMessageParams
+from monday_code.models.publish_message_params import PublishMessageParams
 
 # TODO update the JSON string below
 json = "{}"

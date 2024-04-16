@@ -1,4 +1,4 @@
-# monday_sdk.SecureStorageApi
+# monday_code.SecureStorageApi
 
 All URIs are relative to *http://localhost:59999*
 
@@ -18,21 +18,21 @@ Method | HTTP request | Description
 
 
 ```python
-import monday_sdk
-from monday_sdk.rest import ApiException
+import monday_code
+from monday_code.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost:59999
 # See configuration.py for a list of all supported configuration parameters.
-configuration = monday_sdk.Configuration(
+configuration = monday_code.Configuration(
     host = "http://localhost:59999"
 )
 
 
 # Enter a context with an instance of the API client
-with monday_sdk.ApiClient(configuration) as api_client:
+with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = monday_sdk.SecureStorageApi(api_client)
+    api_instance = monday_code.SecureStorageApi(api_client)
     key = 'key_example' # str | 
 
     try:
@@ -72,7 +72,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_secure_storage**
-> StorageDataContract get_secure_storage(key)
+> SecureStorageDataContract get_secure_storage(key)
 
 
 
@@ -80,22 +80,22 @@ No authorization required
 
 
 ```python
-import monday_sdk
-from monday_sdk.models.storage_data_contract import StorageDataContract
-from monday_sdk.rest import ApiException
+import monday_code
+from monday_code.models.secure_storage_data_contract import SecureStorageDataContract
+from monday_code.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost:59999
 # See configuration.py for a list of all supported configuration parameters.
-configuration = monday_sdk.Configuration(
+configuration = monday_code.Configuration(
     host = "http://localhost:59999"
 )
 
 
 # Enter a context with an instance of the API client
-with monday_sdk.ApiClient(configuration) as api_client:
+with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = monday_sdk.SecureStorageApi(api_client)
+    api_instance = monday_code.SecureStorageApi(api_client)
     key = 'key_example' # str | 
 
     try:
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StorageDataContract**](StorageDataContract.md)
+[**SecureStorageDataContract**](SecureStorageDataContract.md)
 
 ### Authorization
 
@@ -132,13 +132,13 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Ok |  -  |
+**200** | Success |  -  |
 **404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_secure_storage**
-> put_secure_storage(key, storage_data_contract)
+> object put_secure_storage(key, secure_storage_data_contract)
 
 
 
@@ -146,27 +146,29 @@ No authorization required
 
 
 ```python
-import monday_sdk
-from monday_sdk.models.storage_data_contract import StorageDataContract
-from monday_sdk.rest import ApiException
+import monday_code
+from monday_code.models.secure_storage_data_contract import SecureStorageDataContract
+from monday_code.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost:59999
 # See configuration.py for a list of all supported configuration parameters.
-configuration = monday_sdk.Configuration(
+configuration = monday_code.Configuration(
     host = "http://localhost:59999"
 )
 
 
 # Enter a context with an instance of the API client
-with monday_sdk.ApiClient(configuration) as api_client:
+with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = monday_sdk.SecureStorageApi(api_client)
+    api_instance = monday_code.SecureStorageApi(api_client)
     key = 'key_example' # str | 
-    storage_data_contract = monday_sdk.StorageDataContract() # StorageDataContract | 
+    secure_storage_data_contract = monday_code.SecureStorageDataContract() # SecureStorageDataContract | 
 
     try:
-        api_instance.put_secure_storage(key, storage_data_contract)
+        api_response = api_instance.put_secure_storage(key, secure_storage_data_contract)
+        print("The response of SecureStorageApi->put_secure_storage:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling SecureStorageApi->put_secure_storage: %s\n" % e)
 ```
@@ -179,11 +181,11 @@ with monday_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **str**|  | 
- **storage_data_contract** | [**StorageDataContract**](StorageDataContract.md)|  | 
+ **secure_storage_data_contract** | [**SecureStorageDataContract**](SecureStorageDataContract.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -192,13 +194,13 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Created |  -  |
+**200** | Success |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

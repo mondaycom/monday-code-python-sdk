@@ -17,17 +17,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel
-from typing import Any, ClassVar, Dict, List, Optional
+from datetime import datetime
+from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Union
+from monday_code.models.period import Period
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StorageDataContract(BaseModel):
+class IncrementCounterParams(BaseModel):
     """
-    StorageDataContract
+    IncrementCounterParams
     """ # noqa: E501
-    value: Optional[Any]
-    __properties: ClassVar[List[str]] = ["value"]
+    renewal_date: datetime = Field(alias="renewalDate")
+    kind: StrictStr
+    increment_by: Union[StrictFloat, StrictInt] = Field(alias="incrementBy")
+    period: Period
+    __properties: ClassVar[List[str]] = ["renewalDate", "kind", "incrementBy", "period"]
 
     model_config = {
         "populate_by_name": True,
@@ -47,7 +52,7 @@ class StorageDataContract(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StorageDataContract from a JSON string"""
+        """Create an instance of IncrementCounterParams from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -68,16 +73,11 @@ class StorageDataContract(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if value (nullable) is None
-        # and model_fields_set contains the field
-        if self.value is None and "value" in self.model_fields_set:
-            _dict['value'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StorageDataContract from a dict"""
+        """Create an instance of IncrementCounterParams from a dict"""
         if obj is None:
             return None
 
@@ -85,7 +85,10 @@ class StorageDataContract(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "value": obj.get("value")
+            "renewalDate": obj.get("renewalDate"),
+            "kind": obj.get("kind"),
+            "incrementBy": obj.get("incrementBy"),
+            "period": obj.get("period")
         })
         return _obj
 

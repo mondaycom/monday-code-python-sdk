@@ -14,7 +14,7 @@
 
 import unittest
 
-from monday_sdk.models.storage_data_contract import StorageDataContract
+from monday_code.models.storage_data_contract import StorageDataContract
 
 class TestStorageDataContract(unittest.TestCase):
     """StorageDataContract unit test stubs"""
@@ -35,10 +35,12 @@ class TestStorageDataContract(unittest.TestCase):
         model = StorageDataContract()
         if include_optional:
             return StorageDataContract(
+                version = '',
                 value = None
             )
         else:
             return StorageDataContract(
+                version = '',
                 value = None,
         )
         """

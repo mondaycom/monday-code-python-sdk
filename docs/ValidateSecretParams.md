@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from monday_sdk.models.validate_secret_params import ValidateSecretParams
+from monday_code.models.validate_secret_params import ValidateSecretParams
 
 # TODO update the JSON string below
 json = "{}"

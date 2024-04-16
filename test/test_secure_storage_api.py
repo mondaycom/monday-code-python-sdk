@@ -14,7 +14,7 @@
 
 import unittest
 
-from monday_sdk.api.secure_storage_api import SecureStorageApi
+from monday_code.api.secure_storage_api import SecureStorageApi
 
 
 class TestSecureStorageApi(unittest.TestCase):

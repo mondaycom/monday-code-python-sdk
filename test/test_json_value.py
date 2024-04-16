@@ -14,10 +14,10 @@
 
 import unittest
 
-from monday_code.models.publish_message_params import PublishMessageParams
+from monday_code.models.json_value import JsonValue
 
-class TestPublishMessageParams(unittest.TestCase):
-    """PublishMessageParams unit test stubs"""
+class TestJsonValue(unittest.TestCase):
+    """JsonValue unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,24 @@ class TestPublishMessageParams(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> PublishMessageParams:
-        """Test PublishMessageParams
+    def make_instance(self, include_optional) -> JsonValue:
+        """Test JsonValue
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `PublishMessageParams`
+        # uncomment below to create an instance of `JsonValue`
         """
-        model = PublishMessageParams()
+        model = JsonValue()
         if include_optional:
-            return PublishMessageParams(
-                message = ''
+            return JsonValue(
             )
         else:
-            return PublishMessageParams(
-                message = '',
+            return JsonValue(
         )
         """
 
-    def testPublishMessageParams(self):
-        """Test PublishMessageParams"""
+    def testJsonValue(self):
+        """Test JsonValue"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -14,7 +14,7 @@
 
 import unittest
 
-from monday_sdk.api.secret_api import SecretApi
+from monday_code.api.secret_api import SecretApi
 
 
 class TestSecretApi(unittest.TestCase):

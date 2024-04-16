@@ -14,10 +14,10 @@
 
 import unittest
 
-from monday_code.models.publish_message_params import PublishMessageParams
+from monday_code.models.secure_storage_data_contract import SecureStorageDataContract
 
-class TestPublishMessageParams(unittest.TestCase):
-    """PublishMessageParams unit test stubs"""
+class TestSecureStorageDataContract(unittest.TestCase):
+    """SecureStorageDataContract unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,26 @@ class TestPublishMessageParams(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> PublishMessageParams:
-        """Test PublishMessageParams
+    def make_instance(self, include_optional) -> SecureStorageDataContract:
+        """Test SecureStorageDataContract
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `PublishMessageParams`
+        # uncomment below to create an instance of `SecureStorageDataContract`
         """
-        model = PublishMessageParams()
+        model = SecureStorageDataContract()
         if include_optional:
-            return PublishMessageParams(
-                message = ''
+            return SecureStorageDataContract(
+                value = None
             )
         else:
-            return PublishMessageParams(
-                message = '',
+            return SecureStorageDataContract(
+                value = None,
         )
         """
 
-    def testPublishMessageParams(self):
-        """Test PublishMessageParams"""
+    def testSecureStorageDataContract(self):
+        """Test SecureStorageDataContract"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

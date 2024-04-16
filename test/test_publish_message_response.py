@@ -14,7 +14,7 @@
 
 import unittest
 
-from monday_sdk.models.publish_message_response import PublishMessageResponse
+from monday_code.models.publish_message_response import PublishMessageResponse
 
 class TestPublishMessageResponse(unittest.TestCase):
     """PublishMessageResponse unit test stubs"""

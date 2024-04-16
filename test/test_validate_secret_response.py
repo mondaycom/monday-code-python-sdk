@@ -14,7 +14,7 @@
 
 import unittest
 
-from monday_sdk.models.validate_secret_response import ValidateSecretResponse
+from monday_code.models.validate_secret_response import ValidateSecretResponse
 
 class TestValidateSecretResponse(unittest.TestCase):
     """ValidateSecretResponse unit test stubs"""

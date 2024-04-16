@@ -14,7 +14,7 @@
 
 import unittest
 
-from monday_sdk.api.storage_api import StorageApi
+from monday_code.api.storage_api import StorageApi
 
 
 class TestStorageApi(unittest.TestCase):
@@ -26,26 +26,26 @@ class TestStorageApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_delete_storage(self) -> None:
-        """Test case for delete_storage
+    def test_delete_by_key_from_storage(self) -> None:
+        """Test case for delete_by_key_from_storage
 
         """
         pass
 
-    def test_get_storage(self) -> None:
-        """Test case for get_storage
+    def test_get_by_key_from_storage(self) -> None:
+        """Test case for get_by_key_from_storage
 
         """
         pass
 
-    def test_put_storage(self) -> None:
-        """Test case for put_storage
+    def test_increment_counter(self) -> None:
+        """Test case for increment_counter
 
         """
         pass
 
-    def test_storage_increment_counter(self) -> None:
-        """Test case for storage_increment_counter
+    def test_upsert_by_key_from_storage(self) -> None:
+        """Test case for upsert_by_key_from_storage
 
         """
         pass

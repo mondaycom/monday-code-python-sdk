@@ -16,14 +16,14 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from monday_sdk.models.publish_message_params import PublishMessageParams
-from monday_sdk.models.publish_message_response import PublishMessageResponse
-from monday_sdk.models.validate_secret_params import ValidateSecretParams
-from monday_sdk.models.validate_secret_response import ValidateSecretResponse
+from monday_code.models.publish_message_params import PublishMessageParams
+from monday_code.models.publish_message_response import PublishMessageResponse
+from monday_code.models.validate_secret_params import ValidateSecretParams
+from monday_code.models.validate_secret_response import ValidateSecretResponse
 
-from monday_sdk.api_client import ApiClient, RequestSerialized
-from monday_sdk.api_response import ApiResponse
-from monday_sdk.rest import RESTResponseType
+from monday_code.api_client import ApiClient, RequestSerialized
+from monday_code.api_response import ApiResponse
+from monday_code.rest import RESTResponseType
 
 
 class QueueApi:

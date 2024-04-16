@@ -14,7 +14,7 @@
 
 import unittest
 
-from monday_sdk.api.queue_api import QueueApi
+from monday_code.api.queue_api import QueueApi
 
 
 class TestQueueApi(unittest.TestCase):

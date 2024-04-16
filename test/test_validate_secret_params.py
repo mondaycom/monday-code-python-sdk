@@ -14,7 +14,7 @@
 
 import unittest
 
-from monday_sdk.models.validate_secret_params import ValidateSecretParams
+from monday_code.models.validate_secret_params import ValidateSecretParams
 
 class TestValidateSecretParams(unittest.TestCase):
     """ValidateSecretParams unit test stubs"""

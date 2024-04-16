@@ -17,22 +17,17 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Union
-from monday_sdk.models.period import Period
+from pydantic import BaseModel, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class IncrementCounterParams(BaseModel):
+class GetByKeyFromStorage500Response(BaseModel):
     """
-    IncrementCounterParams
+    GetByKeyFromStorage500Response
     """ # noqa: E501
-    renewal_date: datetime = Field(alias="renewalDate")
-    kind: StrictStr
-    increment_by: Union[StrictFloat, StrictInt] = Field(alias="incrementBy")
-    period: Period
-    __properties: ClassVar[List[str]] = ["renewalDate", "kind", "incrementBy", "period"]
+    reason: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["reason"]
 
     model_config = {
         "populate_by_name": True,
@@ -52,7 +47,7 @@ class IncrementCounterParams(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of IncrementCounterParams from a JSON string"""
+        """Create an instance of GetByKeyFromStorage500Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,7 +72,7 @@ class IncrementCounterParams(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of IncrementCounterParams from a dict"""
+        """Create an instance of GetByKeyFromStorage500Response from a dict"""
         if obj is None:
             return None
 
@@ -85,10 +80,7 @@ class IncrementCounterParams(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "renewalDate": obj.get("renewalDate"),
-            "kind": obj.get("kind"),
-            "incrementBy": obj.get("incrementBy"),
-            "period": obj.get("period")
+            "reason": obj.get("reason")
         })
         return _obj
 

@@ -14,10 +14,10 @@
 
 import unittest
 
-from monday_code.models.publish_message_params import PublishMessageParams
+from monday_code.models.get_by_key_from_storage500_response import GetByKeyFromStorage500Response
 
-class TestPublishMessageParams(unittest.TestCase):
-    """PublishMessageParams unit test stubs"""
+class TestGetByKeyFromStorage500Response(unittest.TestCase):
+    """GetByKeyFromStorage500Response unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,25 @@ class TestPublishMessageParams(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> PublishMessageParams:
-        """Test PublishMessageParams
+    def make_instance(self, include_optional) -> GetByKeyFromStorage500Response:
+        """Test GetByKeyFromStorage500Response
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `PublishMessageParams`
+        # uncomment below to create an instance of `GetByKeyFromStorage500Response`
         """
-        model = PublishMessageParams()
+        model = GetByKeyFromStorage500Response()
         if include_optional:
-            return PublishMessageParams(
-                message = ''
+            return GetByKeyFromStorage500Response(
+                reason = ''
             )
         else:
-            return PublishMessageParams(
-                message = '',
+            return GetByKeyFromStorage500Response(
         )
         """
 
-    def testPublishMessageParams(self):
-        """Test PublishMessageParams"""
+    def testGetByKeyFromStorage500Response(self):
+        """Test GetByKeyFromStorage500Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

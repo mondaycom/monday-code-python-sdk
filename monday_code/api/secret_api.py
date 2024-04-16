@@ -18,9 +18,9 @@ from typing_extensions import Annotated
 
 from pydantic import StrictStr
 
-from monday_sdk.api_client import ApiClient, RequestSerialized
-from monday_sdk.api_response import ApiResponse
-from monday_sdk.rest import RESTResponseType
+from monday_code.api_client import ApiClient, RequestSerialized
+from monday_code.api_response import ApiResponse
+from monday_code.rest import RESTResponseType
 
 
 class SecretApi:
@@ -90,7 +90,7 @@ class SecretApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '404': "GetStorage404Response",
+            '404': "GetByKeyFromStorage404Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -157,7 +157,7 @@ class SecretApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '404': "GetStorage404Response",
+            '404': "GetByKeyFromStorage404Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -224,7 +224,7 @@ class SecretApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "str",
-            '404': "GetStorage404Response",
+            '404': "GetByKeyFromStorage404Response",
         }
         response_data = self.api_client.call_api(
             *_param,

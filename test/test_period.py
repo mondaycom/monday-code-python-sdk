@@ -14,7 +14,7 @@
 
 import unittest
 
-from monday_sdk.models.period import Period
+from monday_code.models.period import Period
 
 class TestPeriod(unittest.TestCase):
     """Period unit test stubs"""

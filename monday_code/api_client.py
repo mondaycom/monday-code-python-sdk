@@ -24,11 +24,11 @@ import tempfile
 from urllib.parse import quote
 from typing import Tuple, Optional, List, Dict
 
-from monday_sdk.configuration import Configuration
-from monday_sdk.api_response import ApiResponse, T as ApiResponseT
-import monday_sdk.models
-from monday_sdk import rest
-from monday_sdk.exceptions import (
+from monday_code.configuration import Configuration
+from monday_code.api_response import ApiResponse, T as ApiResponseT
+import monday_code.models
+from monday_code import rest
+from monday_code.exceptions import (
     ApiValueError,
     ApiException,
     BadRequestException,
@@ -87,7 +87,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'OpenAPI-Generator/1.0.0/python'
+        self.user_agent = 'OpenAPI-Generator/0.0.1/python'
         self.client_side_validation = configuration.client_side_validation
 
     def __enter__(self):
@@ -420,7 +420,7 @@ class ApiClient:
             if klass in self.NATIVE_TYPES_MAPPING:
                 klass = self.NATIVE_TYPES_MAPPING[klass]
             else:
-                klass = getattr(monday_sdk.models, klass)
+                klass = getattr(monday_code.models, klass)
 
         if klass in self.PRIMITIVE_TYPES:
             return self.__deserialize_primitive(data, klass)

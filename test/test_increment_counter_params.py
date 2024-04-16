@@ -14,7 +14,7 @@
 
 import unittest
 
-from monday_sdk.models.increment_counter_params import IncrementCounterParams
+from monday_code.models.increment_counter_params import IncrementCounterParams
 
 class TestIncrementCounterParams(unittest.TestCase):
     """IncrementCounterParams unit test stubs"""

@@ -5,12 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | **object** |  | 
+**version** | **str** |  | 
+**value** | [**JsonValue**](JsonValue.md) |  | 
 
 ## Example
 
 ```python
-from monday_sdk.models.storage_data_contract import StorageDataContract
+from monday_code.models.storage_data_contract import StorageDataContract
 
 # TODO update the JSON string below
 json = "{}"
