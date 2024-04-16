@@ -13,7 +13,6 @@ If the python package is hosted on a repository, you can install directly using:
 ```sh
 pip install monday-code
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git`)
 
 Then import the package:
 ```python
@@ -21,8 +20,6 @@ import monday_code
 ```
 
 ## Getting Started
-
-Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```python
 
@@ -32,11 +29,7 @@ from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost:59999
 # See configuration.py for a list of all supported configuration parameters.
-configuration = monday_code.Configuration(
-    host = "http://localhost:59999"
-)
-
-
+configuration = monday_code.Configuration()
 
 # Enter a context with an instance of the API client
 with monday_code.ApiClient(configuration) as api_client:
