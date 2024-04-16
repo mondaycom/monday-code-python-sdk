@@ -18,6 +18,8 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: '3.x'
+    - name: append README_FOR_PYPI.md to FILES file
+      run: echo "README_FOR_PYPI.md" >> FILES
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
