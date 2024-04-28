@@ -1,10 +1,6 @@
 # monday-code
 
 ## Installation & Usage
-### pip install
-
-If the python package is hosted on a repository, you can install directly using:
-
 ```sh
 pip install monday-code
 ```
