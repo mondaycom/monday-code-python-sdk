@@ -1,15 +1,15 @@
-# monday_code.QueueApi
+# monday_code.EnvironmentVariablesApi
 
 All URIs are relative to *http://localhost:59999*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**publish_message**](QueueApi.md#publish_message) | **POST** /queue | 
-[**validate_secret**](QueueApi.md#validate_secret) | **POST** /queue/validate-secret | 
+[**get_environment_variable**](EnvironmentVariablesApi.md#get_environment_variable) | **GET** /environment-variables/{name} | 
+[**get_environment_variable_keys**](EnvironmentVariablesApi.md#get_environment_variable_keys) | **GET** /environment-variables | 
 
 
-# **publish_message**
-> PublishMessageResponse publish_message(publish_message_params)
+# **get_environment_variable**
+> JsonValue get_environment_variable(name)
 
 
 
@@ -18,8 +18,7 @@ Method | HTTP request | Description
 
 ```python
 import monday_code
-from monday_code.models.publish_message_params import PublishMessageParams
-from monday_code.models.publish_message_response import PublishMessageResponse
+from monday_code.models.json_value import JsonValue
 from monday_code.rest import ApiException
 from pprint import pprint
 
@@ -33,15 +32,15 @@ configuration = monday_code.Configuration(
 # Enter a context with an instance of the API client
 with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = monday_code.QueueApi(api_client)
-    publish_message_params = monday_code.PublishMessageParams() # PublishMessageParams | 
+    api_instance = monday_code.EnvironmentVariablesApi(api_client)
+    name = 'name_example' # str | 
 
     try:
-        api_response = api_instance.publish_message(publish_message_params)
-        print("The response of QueueApi->publish_message:\n")
+        api_response = api_instance.get_environment_variable(name)
+        print("The response of EnvironmentVariablesApi->get_environment_variable:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling QueueApi->publish_message: %s\n" % e)
+        print("Exception when calling EnvironmentVariablesApi->get_environment_variable: %s\n" % e)
 ```
 
 
@@ -51,11 +50,11 @@ with monday_code.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **publish_message_params** | [**PublishMessageParams**](PublishMessageParams.md)|  | 
+ **name** | **str**|  | 
 
 ### Return type
 
-[**PublishMessageResponse**](PublishMessageResponse.md)
+[**JsonValue**](JsonValue.md)
 
 ### Authorization
 
@@ -63,19 +62,20 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
+**200** | Ok |  -  |
+**404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **validate_secret**
-> ValidateSecretResponse validate_secret(validate_secret_params)
+# **get_environment_variable_keys**
+> List[str] get_environment_variable_keys()
 
 
 
@@ -84,8 +84,6 @@ No authorization required
 
 ```python
 import monday_code
-from monday_code.models.validate_secret_params import ValidateSecretParams
-from monday_code.models.validate_secret_response import ValidateSecretResponse
 from monday_code.rest import ApiException
 from pprint import pprint
 
@@ -99,29 +97,25 @@ configuration = monday_code.Configuration(
 # Enter a context with an instance of the API client
 with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = monday_code.QueueApi(api_client)
-    validate_secret_params = monday_code.ValidateSecretParams() # ValidateSecretParams | 
+    api_instance = monday_code.EnvironmentVariablesApi(api_client)
 
     try:
-        api_response = api_instance.validate_secret(validate_secret_params)
-        print("The response of QueueApi->validate_secret:\n")
+        api_response = api_instance.get_environment_variable_keys()
+        print("The response of EnvironmentVariablesApi->get_environment_variable_keys:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling QueueApi->validate_secret: %s\n" % e)
+        print("Exception when calling EnvironmentVariablesApi->get_environment_variable_keys: %s\n" % e)
 ```
 
 
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **validate_secret_params** | [**ValidateSecretParams**](ValidateSecretParams.md)|  | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**ValidateSecretResponse**](ValidateSecretResponse.md)
+**List[str]**
 
 ### Authorization
 
@@ -129,14 +123,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
+**200** | Ok |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

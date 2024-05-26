@@ -18,16 +18,20 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
+from monday_code.models.log_methods import LogMethods
+from monday_code.models.write_log_request_body_error import WriteLogRequestBodyError
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ValidateSecretParams(BaseModel):
+class WriteLogRequestBody(BaseModel):
     """
-    ValidateSecretParams
+    WriteLogRequestBody
     """ # noqa: E501
-    secret: StrictStr
-    __properties: ClassVar[List[str]] = ["secret"]
+    error: Optional[WriteLogRequestBodyError] = None
+    message: StrictStr
+    method: LogMethods
+    __properties: ClassVar[List[str]] = ["error", "message", "method"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +51,7 @@ class ValidateSecretParams(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ValidateSecretParams from a JSON string"""
+        """Create an instance of WriteLogRequestBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -68,11 +72,14 @@ class ValidateSecretParams(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of error
+        if self.error:
+            _dict['error'] = self.error.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ValidateSecretParams from a dict"""
+        """Create an instance of WriteLogRequestBody from a dict"""
         if obj is None:
             return None
 
@@ -80,7 +87,9 @@ class ValidateSecretParams(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "secret": obj.get("secret")
+            "error": WriteLogRequestBodyError.from_dict(obj["error"]) if obj.get("error") is not None else None,
+            "message": obj.get("message"),
+            "method": obj.get("method")
         })
         return _obj
 

@@ -17,34 +17,28 @@ from inspect import getfullargspec
 import json
 import pprint
 import re  # noqa: F401
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, ValidationError, field_validator
-from typing import Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
+from typing import Any, Dict, Optional
 from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
 from pydantic import Field
 
-JSONVALUE_ANY_OF_SCHEMAS = ["Dict[str, JsonValue]", "List[JsonValue]", "bool", "float", "str"]
+WRITELOGREQUESTBODYERROR_ANY_OF_SCHEMAS = ["Dict[str, object]", "str"]
 
-class JsonValue(BaseModel):
+class WriteLogRequestBodyError(BaseModel):
     """
-    JsonValue
+    WriteLogRequestBodyError
     """
 
     # data type: str
     anyof_schema_1_validator: Optional[StrictStr] = None
-    # data type: float
-    anyof_schema_2_validator: Optional[Union[StrictFloat, StrictInt]] = None
-    # data type: bool
-    anyof_schema_3_validator: Optional[StrictBool] = None
-    # data type: List[JsonValue]
-    anyof_schema_4_validator: Optional[List[Optional[JsonValue]]] = None
-    # data type: Dict[str, JsonValue]
-    anyof_schema_5_validator: Optional[Dict[str, Optional[JsonValue]]] = None
+    # data type: Dict[str, object]
+    anyof_schema_2_validator: Optional[Dict[str, Any]] = Field(default=None, description="Construct a type with a set of properties K of type T")
     if TYPE_CHECKING:
-        actual_instance: Optional[Union[Dict[str, JsonValue], List[JsonValue], bool, float, str]] = None
+        actual_instance: Optional[Union[Dict[str, object], str]] = None
     else:
         actual_instance: Any = None
-    any_of_schemas: Set[str] = { "Dict[str, JsonValue]", "List[JsonValue]", "bool", "float", "str" }
+    any_of_schemas: Set[str] = { "Dict[str, object]", "str" }
 
     model_config = {
         "validate_assignment": True,
@@ -63,10 +57,7 @@ class JsonValue(BaseModel):
 
     @field_validator('actual_instance')
     def actual_instance_must_validate_anyof(cls, v):
-        if v is None:
-            return v
-
-        instance = JsonValue.model_construct()
+        instance = WriteLogRequestBodyError.model_construct()
         error_messages = []
         # validate data type: str
         try:
@@ -74,33 +65,15 @@ class JsonValue(BaseModel):
             return v
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # validate data type: float
+        # validate data type: Dict[str, object]
         try:
             instance.anyof_schema_2_validator = v
             return v
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # validate data type: bool
-        try:
-            instance.anyof_schema_3_validator = v
-            return v
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # validate data type: List[JsonValue]
-        try:
-            instance.anyof_schema_4_validator = v
-            return v
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # validate data type: Dict[str, JsonValue]
-        try:
-            instance.anyof_schema_5_validator = v
-            return v
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in JsonValue with anyOf schemas: Dict[str, JsonValue], List[JsonValue], bool, float, str. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in WriteLogRequestBodyError with anyOf schemas: Dict[str, object], str. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -112,9 +85,6 @@ class JsonValue(BaseModel):
     def from_json(cls, json_str: str) -> Self:
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
-        if json_str is None:
-            return instance
-
         error_messages = []
         # deserialize data into str
         try:
@@ -125,7 +95,7 @@ class JsonValue(BaseModel):
             return instance
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into float
+        # deserialize data into Dict[str, object]
         try:
             # validation
             instance.anyof_schema_2_validator = json.loads(json_str)
@@ -134,37 +104,10 @@ class JsonValue(BaseModel):
             return instance
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into bool
-        try:
-            # validation
-            instance.anyof_schema_3_validator = json.loads(json_str)
-            # assign value to actual_instance
-            instance.actual_instance = instance.anyof_schema_3_validator
-            return instance
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # deserialize data into List[JsonValue]
-        try:
-            # validation
-            instance.anyof_schema_4_validator = json.loads(json_str)
-            # assign value to actual_instance
-            instance.actual_instance = instance.anyof_schema_4_validator
-            return instance
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # deserialize data into Dict[str, JsonValue]
-        try:
-            # validation
-            instance.anyof_schema_5_validator = json.loads(json_str)
-            # assign value to actual_instance
-            instance.actual_instance = instance.anyof_schema_5_validator
-            return instance
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into JsonValue with anyOf schemas: Dict[str, JsonValue], List[JsonValue], bool, float, str. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into WriteLogRequestBodyError with anyOf schemas: Dict[str, object], str. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -178,7 +121,7 @@ class JsonValue(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], Dict[str, JsonValue], List[JsonValue], bool, float, str]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], Dict[str, object], str]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None
@@ -192,6 +135,4 @@ class JsonValue(BaseModel):
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.model_dump())
 
-# TODO: Rewrite to not use raise_errors
-JsonValue.model_rebuild(raise_errors=False)
 

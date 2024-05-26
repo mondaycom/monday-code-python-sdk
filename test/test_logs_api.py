@@ -14,20 +14,20 @@
 
 import unittest
 
-from monday_code.api.secret_api import SecretApi
+from monday_code.api.logs_api import LogsApi
 
 
-class TestSecretApi(unittest.TestCase):
-    """SecretApi unit test stubs"""
+class TestLogsApi(unittest.TestCase):
+    """LogsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = SecretApi()
+        self.api = LogsApi()
 
     def tearDown(self) -> None:
         pass
 
-    def test_get_secret(self) -> None:
-        """Test case for get_secret
+    def test_write_log(self) -> None:
+        """Test case for write_log
 
         """
         pass

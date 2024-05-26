@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import StrictBool, StrictStr
+from typing import Any, Optional
 from monday_code.models.increment_counter_params import IncrementCounterParams
 from monday_code.models.storage_data_contract import StorageDataContract
 
@@ -263,7 +264,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -545,7 +546,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -818,7 +819,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -858,7 +859,7 @@ class StorageApi:
         ]
 
         return self.api_client.param_serialize(
-            method='POST',
+            method='PUT',
             resource_path='/storage/counter/increment',
             path_params=_path_params,
             query_params=_query_params,
@@ -880,9 +881,9 @@ class StorageApi:
         self,
         key: StrictStr,
         x_monday_access_token: StrictStr,
-        shared: StrictBool,
-        previous_version: StrictStr,
         storage_data_contract: StorageDataContract,
+        shared: Optional[StrictBool] = None,
+        previous_version: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -903,12 +904,12 @@ class StorageApi:
         :type key: str
         :param x_monday_access_token: (required)
         :type x_monday_access_token: str
-        :param shared: (required)
-        :type shared: bool
-        :param previous_version: (required)
-        :type previous_version: str
         :param storage_data_contract: (required)
         :type storage_data_contract: StorageDataContract
+        :param shared:
+        :type shared: bool
+        :param previous_version:
+        :type previous_version: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -934,9 +935,9 @@ class StorageApi:
         _param = self._upsert_by_key_from_storage_serialize(
             key=key,
             x_monday_access_token=x_monday_access_token,
+            storage_data_contract=storage_data_contract,
             shared=shared,
             previous_version=previous_version,
-            storage_data_contract=storage_data_contract,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -962,9 +963,9 @@ class StorageApi:
         self,
         key: StrictStr,
         x_monday_access_token: StrictStr,
-        shared: StrictBool,
-        previous_version: StrictStr,
         storage_data_contract: StorageDataContract,
+        shared: Optional[StrictBool] = None,
+        previous_version: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -985,12 +986,12 @@ class StorageApi:
         :type key: str
         :param x_monday_access_token: (required)
         :type x_monday_access_token: str
-        :param shared: (required)
-        :type shared: bool
-        :param previous_version: (required)
-        :type previous_version: str
         :param storage_data_contract: (required)
         :type storage_data_contract: StorageDataContract
+        :param shared:
+        :type shared: bool
+        :param previous_version:
+        :type previous_version: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1016,9 +1017,9 @@ class StorageApi:
         _param = self._upsert_by_key_from_storage_serialize(
             key=key,
             x_monday_access_token=x_monday_access_token,
+            storage_data_contract=storage_data_contract,
             shared=shared,
             previous_version=previous_version,
-            storage_data_contract=storage_data_contract,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1044,9 +1045,9 @@ class StorageApi:
         self,
         key: StrictStr,
         x_monday_access_token: StrictStr,
-        shared: StrictBool,
-        previous_version: StrictStr,
         storage_data_contract: StorageDataContract,
+        shared: Optional[StrictBool] = None,
+        previous_version: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1067,12 +1068,12 @@ class StorageApi:
         :type key: str
         :param x_monday_access_token: (required)
         :type x_monday_access_token: str
-        :param shared: (required)
-        :type shared: bool
-        :param previous_version: (required)
-        :type previous_version: str
         :param storage_data_contract: (required)
         :type storage_data_contract: StorageDataContract
+        :param shared:
+        :type shared: bool
+        :param previous_version:
+        :type previous_version: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1098,9 +1099,9 @@ class StorageApi:
         _param = self._upsert_by_key_from_storage_serialize(
             key=key,
             x_monday_access_token=x_monday_access_token,
+            storage_data_contract=storage_data_contract,
             shared=shared,
             previous_version=previous_version,
-            storage_data_contract=storage_data_contract,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1121,9 +1122,9 @@ class StorageApi:
         self,
         key,
         x_monday_access_token,
+        storage_data_contract,
         shared,
         previous_version,
-        storage_data_contract,
         _request_auth,
         _content_type,
         _headers,
@@ -1139,7 +1140,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
