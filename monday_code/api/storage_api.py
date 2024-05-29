@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import StrictBool, StrictStr
-from typing import Any, Optional
+from typing import Optional
 from monday_code.models.increment_counter_params import IncrementCounterParams
 from monday_code.models.storage_data_contract import StorageDataContract
 
@@ -264,7 +264,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[str, str] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -546,7 +546,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[str, str] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -819,7 +819,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[str, str] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1140,7 +1140,7 @@ class StorageApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[str, str] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
