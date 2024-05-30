@@ -1,14 +1,14 @@
-# monday_code.SecretApi
+# monday_code.LogsApi
 
 All URIs are relative to *http://localhost:59999*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_secret**](SecretApi.md#get_secret) | **GET** /secrets/{name} | 
+[**write_log**](LogsApi.md#write_log) | **POST** /logs | 
 
 
-# **get_secret**
-> str get_secret(name)
+# **write_log**
+> write_log(write_log_request_body)
 
 
 
@@ -17,6 +17,7 @@ Method | HTTP request | Description
 
 ```python
 import monday_code
+from monday_code.models.write_log_request_body import WriteLogRequestBody
 from monday_code.rest import ApiException
 from pprint import pprint
 
@@ -30,15 +31,13 @@ configuration = monday_code.Configuration(
 # Enter a context with an instance of the API client
 with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = monday_code.SecretApi(api_client)
-    name = 'name_example' # str | 
+    api_instance = monday_code.LogsApi(api_client)
+    write_log_request_body = monday_code.WriteLogRequestBody() # WriteLogRequestBody | 
 
     try:
-        api_response = api_instance.get_secret(name)
-        print("The response of SecretApi->get_secret:\n")
-        pprint(api_response)
+        api_instance.write_log(write_log_request_body)
     except Exception as e:
-        print("Exception when calling SecretApi->get_secret: %s\n" % e)
+        print("Exception when calling LogsApi->write_log: %s\n" % e)
 ```
 
 
@@ -48,11 +47,11 @@ with monday_code.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**|  | 
+ **write_log_request_body** | [**WriteLogRequestBody**](WriteLogRequestBody.md)|  | 
 
 ### Return type
 
-**str**
+void (empty response body)
 
 ### Authorization
 
@@ -60,15 +59,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Ok |  -  |
-**404** |  |  -  |
+**204** | No Content |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

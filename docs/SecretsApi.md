@@ -1,15 +1,15 @@
-# monday_code.QueueApi
+# monday_code.SecretsApi
 
 All URIs are relative to *http://localhost:59999*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**publish_message**](QueueApi.md#publish_message) | **POST** /queue | 
-[**validate_secret**](QueueApi.md#validate_secret) | **POST** /queue/validate-secret | 
+[**get_secret**](SecretsApi.md#get_secret) | **GET** /secrets/{name} | 
+[**get_secret_keys**](SecretsApi.md#get_secret_keys) | **GET** /secrets | 
 
 
-# **publish_message**
-> PublishMessageResponse publish_message(publish_message_params)
+# **get_secret**
+> str get_secret(name)
 
 
 
@@ -18,8 +18,6 @@ Method | HTTP request | Description
 
 ```python
 import monday_code
-from monday_code.models.publish_message_params import PublishMessageParams
-from monday_code.models.publish_message_response import PublishMessageResponse
 from monday_code.rest import ApiException
 from pprint import pprint
 
@@ -33,15 +31,15 @@ configuration = monday_code.Configuration(
 # Enter a context with an instance of the API client
 with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = monday_code.QueueApi(api_client)
-    publish_message_params = monday_code.PublishMessageParams() # PublishMessageParams | 
+    api_instance = monday_code.SecretsApi(api_client)
+    name = 'name_example' # str | 
 
     try:
-        api_response = api_instance.publish_message(publish_message_params)
-        print("The response of QueueApi->publish_message:\n")
+        api_response = api_instance.get_secret(name)
+        print("The response of SecretsApi->get_secret:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling QueueApi->publish_message: %s\n" % e)
+        print("Exception when calling SecretsApi->get_secret: %s\n" % e)
 ```
 
 
@@ -51,11 +49,11 @@ with monday_code.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **publish_message_params** | [**PublishMessageParams**](PublishMessageParams.md)|  | 
+ **name** | **str**|  | 
 
 ### Return type
 
-[**PublishMessageResponse**](PublishMessageResponse.md)
+**str**
 
 ### Authorization
 
@@ -63,7 +61,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
@@ -71,11 +69,12 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **validate_secret**
-> ValidateSecretResponse validate_secret(validate_secret_params)
+# **get_secret_keys**
+> List[str] get_secret_keys()
 
 
 
@@ -84,8 +83,6 @@ No authorization required
 
 ```python
 import monday_code
-from monday_code.models.validate_secret_params import ValidateSecretParams
-from monday_code.models.validate_secret_response import ValidateSecretResponse
 from monday_code.rest import ApiException
 from pprint import pprint
 
@@ -99,29 +96,25 @@ configuration = monday_code.Configuration(
 # Enter a context with an instance of the API client
 with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = monday_code.QueueApi(api_client)
-    validate_secret_params = monday_code.ValidateSecretParams() # ValidateSecretParams | 
+    api_instance = monday_code.SecretsApi(api_client)
 
     try:
-        api_response = api_instance.validate_secret(validate_secret_params)
-        print("The response of QueueApi->validate_secret:\n")
+        api_response = api_instance.get_secret_keys()
+        print("The response of SecretsApi->get_secret_keys:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling QueueApi->validate_secret: %s\n" % e)
+        print("Exception when calling SecretsApi->get_secret_keys: %s\n" % e)
 ```
 
 
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **validate_secret_params** | [**ValidateSecretParams**](ValidateSecretParams.md)|  | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**ValidateSecretResponse**](ValidateSecretResponse.md)
+**List[str]**
 
 ### Authorization
 
@@ -129,7 +122,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details

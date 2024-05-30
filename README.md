@@ -26,15 +26,15 @@ configuration = monday_code.Configuration(
 # Enter a context with an instance of the API client
 with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = monday_code.QueueApi(api_client)
-    publish_message_params = monday_code.PublishMessageParams() # PublishMessageParams | 
+    api_instance = monday_code.EnvironmentVariablesApi(api_client)
+    name = 'name_example' # str | 
 
     try:
-        api_response = api_instance.publish_message(publish_message_params)
-        print("The response of QueueApi->publish_message:\n")
+        api_response = api_instance.get_environment_variable(name)
+        print("The response of EnvironmentVariablesApi->get_environment_variable:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling QueueApi->publish_message: %s\n" % e)
+        print("Exception when calling EnvironmentVariablesApi->get_environment_variable: %s\n" % e)
 
 ```
 
@@ -44,15 +44,19 @@ All URIs are relative to *http://localhost:59999*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*EnvironmentVariablesApi* | [**get_environment_variable**](docs/EnvironmentVariablesApi.md#get_environment_variable) | **GET** /environment-variables/{name} | 
+*EnvironmentVariablesApi* | [**get_environment_variable_keys**](docs/EnvironmentVariablesApi.md#get_environment_variable_keys) | **GET** /environment-variables | 
+*LogsApi* | [**write_log**](docs/LogsApi.md#write_log) | **POST** /logs | 
 *QueueApi* | [**publish_message**](docs/QueueApi.md#publish_message) | **POST** /queue | 
 *QueueApi* | [**validate_secret**](docs/QueueApi.md#validate_secret) | **POST** /queue/validate-secret | 
-*SecretApi* | [**get_secret**](docs/SecretApi.md#get_secret) | **GET** /secrets/{name} | 
+*SecretsApi* | [**get_secret**](docs/SecretsApi.md#get_secret) | **GET** /secrets/{name} | 
+*SecretsApi* | [**get_secret_keys**](docs/SecretsApi.md#get_secret_keys) | **GET** /secrets | 
 *SecureStorageApi* | [**delete_secure_storage**](docs/SecureStorageApi.md#delete_secure_storage) | **DELETE** /secure-storage/{key} | 
 *SecureStorageApi* | [**get_secure_storage**](docs/SecureStorageApi.md#get_secure_storage) | **GET** /secure-storage/{key} | 
 *SecureStorageApi* | [**put_secure_storage**](docs/SecureStorageApi.md#put_secure_storage) | **PUT** /secure-storage/{key} | 
 *StorageApi* | [**delete_by_key_from_storage**](docs/StorageApi.md#delete_by_key_from_storage) | **DELETE** /storage/{key} | 
 *StorageApi* | [**get_by_key_from_storage**](docs/StorageApi.md#get_by_key_from_storage) | **GET** /storage/{key} | 
-*StorageApi* | [**increment_counter**](docs/StorageApi.md#increment_counter) | **POST** /storage/counter/increment | 
+*StorageApi* | [**increment_counter**](docs/StorageApi.md#increment_counter) | **PUT** /storage/counter/increment | 
 *StorageApi* | [**upsert_by_key_from_storage**](docs/StorageApi.md#upsert_by_key_from_storage) | **PUT** /storage/{key} | 
 
 
@@ -62,6 +66,7 @@ Class | Method | HTTP request | Description
  - [GetByKeyFromStorage500Response](docs/GetByKeyFromStorage500Response.md)
  - [IncrementCounterParams](docs/IncrementCounterParams.md)
  - [JsonValue](docs/JsonValue.md)
+ - [LogMethods](docs/LogMethods.md)
  - [Period](docs/Period.md)
  - [PublishMessageParams](docs/PublishMessageParams.md)
  - [PublishMessageResponse](docs/PublishMessageResponse.md)
@@ -69,4 +74,6 @@ Class | Method | HTTP request | Description
  - [StorageDataContract](docs/StorageDataContract.md)
  - [ValidateSecretParams](docs/ValidateSecretParams.md)
  - [ValidateSecretResponse](docs/ValidateSecretResponse.md)
+ - [WriteLogRequestBody](docs/WriteLogRequestBody.md)
+ - [WriteLogRequestBodyError](docs/WriteLogRequestBodyError.md)
 

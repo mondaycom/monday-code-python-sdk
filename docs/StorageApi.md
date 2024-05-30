@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_by_key_from_storage**](StorageApi.md#delete_by_key_from_storage) | **DELETE** /storage/{key} | 
 [**get_by_key_from_storage**](StorageApi.md#get_by_key_from_storage) | **GET** /storage/{key} | 
-[**increment_counter**](StorageApi.md#increment_counter) | **POST** /storage/counter/increment | 
+[**increment_counter**](StorageApi.md#increment_counter) | **PUT** /storage/counter/increment | 
 [**upsert_by_key_from_storage**](StorageApi.md#upsert_by_key_from_storage) | **PUT** /storage/{key} | 
 
 
@@ -70,7 +70,7 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Deleted |  -  |
+**204** | No Content |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -139,7 +139,7 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Ok |  -  |
+**200** | OK |  -  |
 **404** |  |  -  |
 **500** |  |  -  |
 
@@ -208,7 +208,7 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | OK |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -281,7 +281,7 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | OK |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
