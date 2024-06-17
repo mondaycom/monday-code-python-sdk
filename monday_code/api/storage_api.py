@@ -17,9 +17,12 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import StrictBool, StrictStr
-from typing import Any, Optional
+from typing import Optional
+from monday_code.models.increment_counter200_response import IncrementCounter200Response
 from monday_code.models.increment_counter_params import IncrementCounterParams
+from monday_code.models.json_value import JsonValue
 from monday_code.models.storage_data_contract import StorageDataContract
+from monday_code.models.upsert_by_key_from_storage200_response import UpsertByKeyFromStorage200Response
 
 from monday_code.api_client import ApiClient, RequestSerialized
 from monday_code.api_response import ApiResponse
@@ -611,7 +614,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
+    ) -> IncrementCounter200Response:
         """increment_counter
 
 
@@ -651,7 +654,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "IncrementCounter200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -681,7 +684,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
+    ) -> ApiResponse[IncrementCounter200Response]:
         """increment_counter
 
 
@@ -721,7 +724,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "IncrementCounter200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -791,7 +794,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "IncrementCounter200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -881,7 +884,7 @@ class StorageApi:
         self,
         key: StrictStr,
         x_monday_access_token: StrictStr,
-        storage_data_contract: StorageDataContract,
+        json_value: Optional[JsonValue],
         shared: Optional[StrictBool] = None,
         previous_version: Optional[StrictStr] = None,
         _request_timeout: Union[
@@ -896,7 +899,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
+    ) -> UpsertByKeyFromStorage200Response:
         """upsert_by_key_from_storage
 
 
@@ -904,8 +907,8 @@ class StorageApi:
         :type key: str
         :param x_monday_access_token: (required)
         :type x_monday_access_token: str
-        :param storage_data_contract: (required)
-        :type storage_data_contract: StorageDataContract
+        :param json_value: (required)
+        :type json_value: JsonValue
         :param shared:
         :type shared: bool
         :param previous_version:
@@ -935,7 +938,7 @@ class StorageApi:
         _param = self._upsert_by_key_from_storage_serialize(
             key=key,
             x_monday_access_token=x_monday_access_token,
-            storage_data_contract=storage_data_contract,
+            json_value=json_value,
             shared=shared,
             previous_version=previous_version,
             _request_auth=_request_auth,
@@ -945,7 +948,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "UpsertByKeyFromStorage200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -963,7 +966,7 @@ class StorageApi:
         self,
         key: StrictStr,
         x_monday_access_token: StrictStr,
-        storage_data_contract: StorageDataContract,
+        json_value: Optional[JsonValue],
         shared: Optional[StrictBool] = None,
         previous_version: Optional[StrictStr] = None,
         _request_timeout: Union[
@@ -978,7 +981,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
+    ) -> ApiResponse[UpsertByKeyFromStorage200Response]:
         """upsert_by_key_from_storage
 
 
@@ -986,8 +989,8 @@ class StorageApi:
         :type key: str
         :param x_monday_access_token: (required)
         :type x_monday_access_token: str
-        :param storage_data_contract: (required)
-        :type storage_data_contract: StorageDataContract
+        :param json_value: (required)
+        :type json_value: JsonValue
         :param shared:
         :type shared: bool
         :param previous_version:
@@ -1017,7 +1020,7 @@ class StorageApi:
         _param = self._upsert_by_key_from_storage_serialize(
             key=key,
             x_monday_access_token=x_monday_access_token,
-            storage_data_contract=storage_data_contract,
+            json_value=json_value,
             shared=shared,
             previous_version=previous_version,
             _request_auth=_request_auth,
@@ -1027,7 +1030,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "UpsertByKeyFromStorage200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1045,7 +1048,7 @@ class StorageApi:
         self,
         key: StrictStr,
         x_monday_access_token: StrictStr,
-        storage_data_contract: StorageDataContract,
+        json_value: Optional[JsonValue],
         shared: Optional[StrictBool] = None,
         previous_version: Optional[StrictStr] = None,
         _request_timeout: Union[
@@ -1068,8 +1071,8 @@ class StorageApi:
         :type key: str
         :param x_monday_access_token: (required)
         :type x_monday_access_token: str
-        :param storage_data_contract: (required)
-        :type storage_data_contract: StorageDataContract
+        :param json_value: (required)
+        :type json_value: JsonValue
         :param shared:
         :type shared: bool
         :param previous_version:
@@ -1099,7 +1102,7 @@ class StorageApi:
         _param = self._upsert_by_key_from_storage_serialize(
             key=key,
             x_monday_access_token=x_monday_access_token,
-            storage_data_contract=storage_data_contract,
+            json_value=json_value,
             shared=shared,
             previous_version=previous_version,
             _request_auth=_request_auth,
@@ -1109,7 +1112,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "UpsertByKeyFromStorage200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1122,7 +1125,7 @@ class StorageApi:
         self,
         key,
         x_monday_access_token,
-        storage_data_contract,
+        json_value,
         shared,
         previous_version,
         _request_auth,
@@ -1160,8 +1163,8 @@ class StorageApi:
             _header_params['x-monday-access-token'] = x_monday_access_token
         # process the form parameters
         # process the body parameter
-        if storage_data_contract is not None:
-            _body_params = storage_data_contract
+        if json_value is not None:
+            _body_params = json_value
 
 
         # set the HTTP header `Accept`

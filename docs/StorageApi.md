@@ -146,7 +146,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **increment_counter**
-> object increment_counter(x_monday_access_token, increment_counter_params)
+> IncrementCounter200Response increment_counter(x_monday_access_token, increment_counter_params)
 
 
 
@@ -155,6 +155,7 @@ No authorization required
 
 ```python
 import monday_code
+from monday_code.models.increment_counter200_response import IncrementCounter200Response
 from monday_code.models.increment_counter_params import IncrementCounterParams
 from monday_code.rest import ApiException
 from pprint import pprint
@@ -193,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**IncrementCounter200Response**](IncrementCounter200Response.md)
 
 ### Authorization
 
@@ -213,7 +214,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upsert_by_key_from_storage**
-> object upsert_by_key_from_storage(key, x_monday_access_token, storage_data_contract, shared=shared, previous_version=previous_version)
+> UpsertByKeyFromStorage200Response upsert_by_key_from_storage(key, x_monday_access_token, json_value, shared=shared, previous_version=previous_version)
 
 
 
@@ -222,7 +223,8 @@ No authorization required
 
 ```python
 import monday_code
-from monday_code.models.storage_data_contract import StorageDataContract
+from monday_code.models.json_value import JsonValue
+from monday_code.models.upsert_by_key_from_storage200_response import UpsertByKeyFromStorage200Response
 from monday_code.rest import ApiException
 from pprint import pprint
 
@@ -239,12 +241,12 @@ with monday_code.ApiClient(configuration) as api_client:
     api_instance = monday_code.StorageApi(api_client)
     key = 'key_example' # str | 
     x_monday_access_token = 'x_monday_access_token_example' # str | 
-    storage_data_contract = monday_code.StorageDataContract() # StorageDataContract | 
+    json_value = monday_code.JsonValue() # JsonValue | 
     shared = True # bool |  (optional)
     previous_version = 'previous_version_example' # str |  (optional)
 
     try:
-        api_response = api_instance.upsert_by_key_from_storage(key, x_monday_access_token, storage_data_contract, shared=shared, previous_version=previous_version)
+        api_response = api_instance.upsert_by_key_from_storage(key, x_monday_access_token, json_value, shared=shared, previous_version=previous_version)
         print("The response of StorageApi->upsert_by_key_from_storage:\n")
         pprint(api_response)
     except Exception as e:
@@ -260,13 +262,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **str**|  | 
  **x_monday_access_token** | **str**|  | 
- **storage_data_contract** | [**StorageDataContract**](StorageDataContract.md)|  | 
+ **json_value** | [**JsonValue**](JsonValue.md)|  | 
  **shared** | **bool**|  | [optional] 
  **previous_version** | **str**|  | [optional] 
 
 ### Return type
 
-**object**
+[**UpsertByKeyFromStorage200Response**](UpsertByKeyFromStorage200Response.md)
 
 ### Authorization
 
