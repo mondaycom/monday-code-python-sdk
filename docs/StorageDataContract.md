@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **version** | **str** |  | 
-**value** | [**JsonValue**](JsonValue.md) |  | 
+**value** | **object** |  | 
 
 ## Example
 

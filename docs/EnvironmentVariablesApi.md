@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_environment_variable**
-> JsonValue get_environment_variable(name)
+> object get_environment_variable(name)
 
 
 
@@ -18,7 +18,6 @@ Method | HTTP request | Description
 
 ```python
 import monday_code
-from monday_code.models.json_value import JsonValue
 from monday_code.rest import ApiException
 from pprint import pprint
 
@@ -54,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JsonValue**](JsonValue.md)
+**object**
 
 ### Authorization
 
