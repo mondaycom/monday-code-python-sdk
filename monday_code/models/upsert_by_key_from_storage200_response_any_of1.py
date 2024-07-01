@@ -17,18 +17,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StorageDataContract(BaseModel):
+class UpsertByKeyFromStorage200ResponseAnyOf1(BaseModel):
     """
-    StorageDataContract
+    UpsertByKeyFromStorage200ResponseAnyOf1
     """ # noqa: E501
-    version: StrictStr
-    value: Optional[Any]
-    __properties: ClassVar[List[str]] = ["version", "value"]
+    version: Optional[Any] = None
+    success: StrictBool
+    error: StrictStr
+    __properties: ClassVar[List[str]] = ["version", "success", "error"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +49,7 @@ class StorageDataContract(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StorageDataContract from a JSON string"""
+        """Create an instance of UpsertByKeyFromStorage200ResponseAnyOf1 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,16 +70,16 @@ class StorageDataContract(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if value (nullable) is None
+        # set to None if version (nullable) is None
         # and model_fields_set contains the field
-        if self.value is None and "value" in self.model_fields_set:
-            _dict['value'] = None
+        if self.version is None and "version" in self.model_fields_set:
+            _dict['version'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StorageDataContract from a dict"""
+        """Create an instance of UpsertByKeyFromStorage200ResponseAnyOf1 from a dict"""
         if obj is None:
             return None
 
@@ -87,7 +88,8 @@ class StorageDataContract(BaseModel):
 
         _obj = cls.model_validate({
             "version": obj.get("version"),
-            "value": obj.get("value")
+            "success": obj.get("success"),
+            "error": obj.get("error")
         })
         return _obj
 

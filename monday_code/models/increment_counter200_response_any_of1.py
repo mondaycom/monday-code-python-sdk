@@ -17,17 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SecureStorageDataContract(BaseModel):
+class IncrementCounter200ResponseAnyOf1(BaseModel):
     """
-    SecureStorageDataContract
+    IncrementCounter200ResponseAnyOf1
     """ # noqa: E501
-    value: Optional[Any]
-    __properties: ClassVar[List[str]] = ["value"]
+    error: Optional[Any] = None
+    success: StrictBool
+    new_counter_value: Union[StrictFloat, StrictInt] = Field(alias="newCounterValue")
+    message: StrictStr
+    __properties: ClassVar[List[str]] = ["error", "success", "newCounterValue", "message"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +50,7 @@ class SecureStorageDataContract(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SecureStorageDataContract from a JSON string"""
+        """Create an instance of IncrementCounter200ResponseAnyOf1 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -68,16 +71,16 @@ class SecureStorageDataContract(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if value (nullable) is None
+        # set to None if error (nullable) is None
         # and model_fields_set contains the field
-        if self.value is None and "value" in self.model_fields_set:
-            _dict['value'] = None
+        if self.error is None and "error" in self.model_fields_set:
+            _dict['error'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SecureStorageDataContract from a dict"""
+        """Create an instance of IncrementCounter200ResponseAnyOf1 from a dict"""
         if obj is None:
             return None
 
@@ -85,7 +88,10 @@ class SecureStorageDataContract(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "value": obj.get("value")
+            "error": obj.get("error"),
+            "success": obj.get("success"),
+            "newCounterValue": obj.get("newCounterValue"),
+            "message": obj.get("message")
         })
         return _obj
 

@@ -14,10 +14,10 @@
 
 import unittest
 
-from monday_code.models.json_value import JsonValue
+from monday_code.models.json_data_contract import JsonDataContract
 
-class TestJsonValue(unittest.TestCase):
-    """JsonValue unit test stubs"""
+class TestJsonDataContract(unittest.TestCase):
+    """JsonDataContract unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,24 +25,26 @@ class TestJsonValue(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> JsonValue:
-        """Test JsonValue
+    def make_instance(self, include_optional) -> JsonDataContract:
+        """Test JsonDataContract
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `JsonValue`
+        # uncomment below to create an instance of `JsonDataContract`
         """
-        model = JsonValue()
+        model = JsonDataContract()
         if include_optional:
-            return JsonValue(
+            return JsonDataContract(
+                value = None
             )
         else:
-            return JsonValue(
+            return JsonDataContract(
+                value = None,
         )
         """
 
-    def testJsonValue(self):
-        """Test JsonValue"""
+    def testJsonDataContract(self):
+        """Test JsonDataContract"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

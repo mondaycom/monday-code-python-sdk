@@ -16,9 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictStr
-from typing import Any
-from monday_code.models.secure_storage_data_contract import SecureStorageDataContract
+from pydantic import StrictBool, StrictStr
+from monday_code.models.json_data_contract import JsonDataContract
 
 from monday_code.api_client import ApiClient, RequestSerialized
 from monday_code.api_response import ApiResponse
@@ -302,7 +301,7 @@ class SecureStorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SecureStorageDataContract:
+    ) -> JsonDataContract:
         """get_secure_storage
 
 
@@ -339,7 +338,7 @@ class SecureStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SecureStorageDataContract",
+            '200': "JsonDataContract",
             '404': "GetByKeyFromStorage404Response",
         }
         response_data = self.api_client.call_api(
@@ -369,7 +368,7 @@ class SecureStorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SecureStorageDataContract]:
+    ) -> ApiResponse[JsonDataContract]:
         """get_secure_storage
 
 
@@ -406,7 +405,7 @@ class SecureStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SecureStorageDataContract",
+            '200': "JsonDataContract",
             '404': "GetByKeyFromStorage404Response",
         }
         response_data = self.api_client.call_api(
@@ -473,7 +472,7 @@ class SecureStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SecureStorageDataContract",
+            '200': "JsonDataContract",
             '404': "GetByKeyFromStorage404Response",
         }
         response_data = self.api_client.call_api(
@@ -547,7 +546,7 @@ class SecureStorageApi:
     def put_secure_storage(
         self,
         key: StrictStr,
-        secure_storage_data_contract: SecureStorageDataContract,
+        json_data_contract: JsonDataContract,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -560,14 +559,14 @@ class SecureStorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
+    ) -> bool:
         """put_secure_storage
 
 
         :param key: (required)
         :type key: str
-        :param secure_storage_data_contract: (required)
-        :type secure_storage_data_contract: SecureStorageDataContract
+        :param json_data_contract: (required)
+        :type json_data_contract: JsonDataContract
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -592,7 +591,7 @@ class SecureStorageApi:
 
         _param = self._put_secure_storage_serialize(
             key=key,
-            secure_storage_data_contract=secure_storage_data_contract,
+            json_data_contract=json_data_contract,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -600,7 +599,7 @@ class SecureStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "bool",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -617,7 +616,7 @@ class SecureStorageApi:
     def put_secure_storage_with_http_info(
         self,
         key: StrictStr,
-        secure_storage_data_contract: SecureStorageDataContract,
+        json_data_contract: JsonDataContract,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -630,14 +629,14 @@ class SecureStorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
+    ) -> ApiResponse[bool]:
         """put_secure_storage
 
 
         :param key: (required)
         :type key: str
-        :param secure_storage_data_contract: (required)
-        :type secure_storage_data_contract: SecureStorageDataContract
+        :param json_data_contract: (required)
+        :type json_data_contract: JsonDataContract
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -662,7 +661,7 @@ class SecureStorageApi:
 
         _param = self._put_secure_storage_serialize(
             key=key,
-            secure_storage_data_contract=secure_storage_data_contract,
+            json_data_contract=json_data_contract,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -670,7 +669,7 @@ class SecureStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "bool",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -687,7 +686,7 @@ class SecureStorageApi:
     def put_secure_storage_without_preload_content(
         self,
         key: StrictStr,
-        secure_storage_data_contract: SecureStorageDataContract,
+        json_data_contract: JsonDataContract,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -706,8 +705,8 @@ class SecureStorageApi:
 
         :param key: (required)
         :type key: str
-        :param secure_storage_data_contract: (required)
-        :type secure_storage_data_contract: SecureStorageDataContract
+        :param json_data_contract: (required)
+        :type json_data_contract: JsonDataContract
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -732,7 +731,7 @@ class SecureStorageApi:
 
         _param = self._put_secure_storage_serialize(
             key=key,
-            secure_storage_data_contract=secure_storage_data_contract,
+            json_data_contract=json_data_contract,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -740,7 +739,7 @@ class SecureStorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
+            '200': "bool",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -752,7 +751,7 @@ class SecureStorageApi:
     def _put_secure_storage_serialize(
         self,
         key,
-        secure_storage_data_contract,
+        json_data_contract,
         _request_auth,
         _content_type,
         _headers,
@@ -778,8 +777,8 @@ class SecureStorageApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if secure_storage_data_contract is not None:
-            _body_params = secure_storage_data_contract
+        if json_data_contract is not None:
+            _body_params = json_data_contract
 
 
         # set the HTTP header `Accept`

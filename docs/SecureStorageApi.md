@@ -72,7 +72,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_secure_storage**
-> SecureStorageDataContract get_secure_storage(key)
+> JsonDataContract get_secure_storage(key)
 
 
 
@@ -81,7 +81,7 @@ No authorization required
 
 ```python
 import monday_code
-from monday_code.models.secure_storage_data_contract import SecureStorageDataContract
+from monday_code.models.json_data_contract import JsonDataContract
 from monday_code.rest import ApiException
 from pprint import pprint
 
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecureStorageDataContract**](SecureStorageDataContract.md)
+[**JsonDataContract**](JsonDataContract.md)
 
 ### Authorization
 
@@ -138,7 +138,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_secure_storage**
-> object put_secure_storage(key, secure_storage_data_contract)
+> bool put_secure_storage(key, json_data_contract)
 
 
 
@@ -147,7 +147,7 @@ No authorization required
 
 ```python
 import monday_code
-from monday_code.models.secure_storage_data_contract import SecureStorageDataContract
+from monday_code.models.json_data_contract import JsonDataContract
 from monday_code.rest import ApiException
 from pprint import pprint
 
@@ -163,10 +163,10 @@ with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.SecureStorageApi(api_client)
     key = 'key_example' # str | 
-    secure_storage_data_contract = monday_code.SecureStorageDataContract() # SecureStorageDataContract | 
+    json_data_contract = monday_code.JsonDataContract() # JsonDataContract | 
 
     try:
-        api_response = api_instance.put_secure_storage(key, secure_storage_data_contract)
+        api_response = api_instance.put_secure_storage(key, json_data_contract)
         print("The response of SecureStorageApi->put_secure_storage:\n")
         pprint(api_response)
     except Exception as e:
@@ -181,11 +181,11 @@ with monday_code.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **str**|  | 
- **secure_storage_data_contract** | [**SecureStorageDataContract**](SecureStorageDataContract.md)|  | 
+ **json_data_contract** | [**JsonDataContract**](JsonDataContract.md)|  | 
 
 ### Return type
 
-**object**
+**bool**
 
 ### Authorization
 
