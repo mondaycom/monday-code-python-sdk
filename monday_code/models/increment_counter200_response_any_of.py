@@ -17,18 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StorageDataContract(BaseModel):
+class IncrementCounter200ResponseAnyOf(BaseModel):
     """
-    StorageDataContract
+    IncrementCounter200ResponseAnyOf
     """ # noqa: E501
-    version: Optional[StrictStr] = None
-    value: Optional[Any]
-    __properties: ClassVar[List[str]] = ["version", "value"]
+    new_counter_value: Optional[Any] = Field(default=None, alias="newCounterValue")
+    message: Optional[Any] = None
+    success: StrictBool
+    error: StrictStr
+    __properties: ClassVar[List[str]] = ["newCounterValue", "message", "success", "error"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +50,7 @@ class StorageDataContract(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StorageDataContract from a JSON string"""
+        """Create an instance of IncrementCounter200ResponseAnyOf from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,16 +71,21 @@ class StorageDataContract(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if value (nullable) is None
+        # set to None if new_counter_value (nullable) is None
         # and model_fields_set contains the field
-        if self.value is None and "value" in self.model_fields_set:
-            _dict['value'] = None
+        if self.new_counter_value is None and "new_counter_value" in self.model_fields_set:
+            _dict['newCounterValue'] = None
+
+        # set to None if message (nullable) is None
+        # and model_fields_set contains the field
+        if self.message is None and "message" in self.model_fields_set:
+            _dict['message'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StorageDataContract from a dict"""
+        """Create an instance of IncrementCounter200ResponseAnyOf from a dict"""
         if obj is None:
             return None
 
@@ -86,8 +93,10 @@ class StorageDataContract(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "version": obj.get("version"),
-            "value": obj.get("value")
+            "newCounterValue": obj.get("newCounterValue"),
+            "message": obj.get("message"),
+            "success": obj.get("success"),
+            "error": obj.get("error")
         })
         return _obj
 

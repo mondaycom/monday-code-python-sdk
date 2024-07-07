@@ -17,8 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import StrictStr
-from typing import List
-from monday_code.models.json_value import JsonValue
+from typing import Any, List
 
 from monday_code.api_client import ApiClient, RequestSerialized
 from monday_code.api_response import ApiResponse
@@ -54,7 +53,7 @@ class EnvironmentVariablesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> JsonValue:
+    ) -> object:
         """get_environment_variable
 
 
@@ -91,7 +90,7 @@ class EnvironmentVariablesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "JsonValue",
+            '200': "object",
             '404': "GetByKeyFromStorage404Response",
         }
         response_data = self.api_client.call_api(
@@ -121,7 +120,7 @@ class EnvironmentVariablesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[JsonValue]:
+    ) -> ApiResponse[object]:
         """get_environment_variable
 
 
@@ -158,7 +157,7 @@ class EnvironmentVariablesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "JsonValue",
+            '200': "object",
             '404': "GetByKeyFromStorage404Response",
         }
         response_data = self.api_client.call_api(
@@ -225,7 +224,7 @@ class EnvironmentVariablesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "JsonValue",
+            '200': "object",
             '404': "GetByKeyFromStorage404Response",
         }
         response_data = self.api_client.call_api(

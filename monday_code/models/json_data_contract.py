@@ -17,18 +17,17 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StorageDataContract(BaseModel):
+class JsonDataContract(BaseModel):
     """
-    StorageDataContract
+    JsonDataContract
     """ # noqa: E501
-    version: Optional[StrictStr] = None
     value: Optional[Any]
-    __properties: ClassVar[List[str]] = ["version", "value"]
+    __properties: ClassVar[List[str]] = ["value"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +47,7 @@ class StorageDataContract(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StorageDataContract from a JSON string"""
+        """Create an instance of JsonDataContract from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -78,7 +77,7 @@ class StorageDataContract(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StorageDataContract from a dict"""
+        """Create an instance of JsonDataContract from a dict"""
         if obj is None:
             return None
 
@@ -86,7 +85,6 @@ class StorageDataContract(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "version": obj.get("version"),
             "value": obj.get("value")
         })
         return _obj

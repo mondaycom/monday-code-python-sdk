@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**version** | **str** |  | 
-**value** | [**JsonValue**](JsonValue.md) |  | 
+**version** | **str** |  | [optional] 
+**value** | **object** |  | 
 
 ## Example
 
