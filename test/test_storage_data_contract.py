@@ -40,7 +40,6 @@ class TestStorageDataContract(unittest.TestCase):
             )
         else:
             return StorageDataContract(
-                version = '',
                 value = None,
         )
         """

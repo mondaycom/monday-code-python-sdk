@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**version** | **str** |  | 
+**version** | **str** |  | [optional] 
 **value** | **object** |  | 
 
 ## Example

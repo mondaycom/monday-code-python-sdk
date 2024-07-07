@@ -26,7 +26,7 @@ class StorageDataContract(BaseModel):
     """
     StorageDataContract
     """ # noqa: E501
-    version: StrictStr
+    version: Optional[StrictStr] = None
     value: Optional[Any]
     __properties: ClassVar[List[str]] = ["version", "value"]
 
