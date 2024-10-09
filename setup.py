@@ -21,12 +21,12 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "monday-code"
-VERSION = "0.2.0"
-PYTHON_REQUIRES = ">= 3.8"
+VERSION = "0.1.0"
+PYTHON_REQUIRES = ">=3.7"
 REQUIRES = [
-    "urllib3 >= 1.25.3, < 1.27",
-    "python-dateutil >= 2.8.2",
-    "pydantic >= 2.9.2",
+    "urllib3 >= 1.25.3, < 2.1.0",
+    "python-dateutil",
+    "pydantic >= 2",
     "typing-extensions >= 4.7.1",
 ]
 # read the contents of your README file

@@ -27,7 +27,7 @@ class TestUpsertByKeyFromStorage200ResponseAnyOf(unittest.TestCase):
 
     def make_instance(self, include_optional) -> UpsertByKeyFromStorage200ResponseAnyOf:
         """Test UpsertByKeyFromStorage200ResponseAnyOf
-            include_optional is a boolean, when False only required
+            include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `UpsertByKeyFromStorage200ResponseAnyOf`

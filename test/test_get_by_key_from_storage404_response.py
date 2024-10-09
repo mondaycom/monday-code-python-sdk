@@ -27,7 +27,7 @@ class TestGetByKeyFromStorage404Response(unittest.TestCase):
 
     def make_instance(self, include_optional) -> GetByKeyFromStorage404Response:
         """Test GetByKeyFromStorage404Response
-            include_optional is a boolean, when False only required
+            include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `GetByKeyFromStorage404Response`
