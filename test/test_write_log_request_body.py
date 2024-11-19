@@ -35,6 +35,9 @@ class TestWriteLogRequestBody(unittest.TestCase):
         model = WriteLogRequestBody()
         if include_optional:
             return WriteLogRequestBody(
+                payload = {
+                    'key' : null
+                    },
                 error = None,
                 message = '',
                 method = 'debug'

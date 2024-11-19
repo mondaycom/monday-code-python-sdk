@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from monday_code.models.log_methods import LogMethods
 from monday_code.models.write_log_request_body_error import WriteLogRequestBodyError
@@ -28,10 +28,11 @@ class WriteLogRequestBody(BaseModel):
     """
     WriteLogRequestBody
     """ # noqa: E501
+    payload: Optional[Dict[str, Any]] = Field(default=None, description="Construct a type with a set of properties K of type T")
     error: Optional[WriteLogRequestBodyError] = None
     message: StrictStr
     method: LogMethods
-    __properties: ClassVar[List[str]] = ["error", "message", "method"]
+    __properties: ClassVar[List[str]] = ["payload", "error", "message", "method"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,6 +88,7 @@ class WriteLogRequestBody(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "payload": obj.get("payload"),
             "error": WriteLogRequestBodyError.from_dict(obj["error"]) if obj.get("error") is not None else None,
             "message": obj.get("message"),
             "method": obj.get("method")
