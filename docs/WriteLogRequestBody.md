@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**payload** | **Dict[str, object]** | Construct a type with a set of properties K of type T | [optional] 
 **error** | [**WriteLogRequestBodyError**](WriteLogRequestBodyError.md) |  | [optional] 
 **message** | **str** |  | 
 **method** | [**LogMethods**](LogMethods.md) |  | 
