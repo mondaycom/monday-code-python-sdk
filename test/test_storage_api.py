@@ -44,6 +44,12 @@ class TestStorageApi(unittest.TestCase):
         """
         pass
 
+    def test_search_record(self) -> None:
+        """Test case for search_record
+
+        """
+        pass
+
     def test_upsert_by_key_from_storage(self) -> None:
         """Test case for upsert_by_key_from_storage
 

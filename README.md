@@ -57,6 +57,7 @@ Class | Method | HTTP request | Description
 *StorageApi* | [**delete_by_key_from_storage**](docs/StorageApi.md#delete_by_key_from_storage) | **DELETE** /storage/{key} | 
 *StorageApi* | [**get_by_key_from_storage**](docs/StorageApi.md#get_by_key_from_storage) | **GET** /storage/{key} | 
 *StorageApi* | [**increment_counter**](docs/StorageApi.md#increment_counter) | **PUT** /storage/counter/increment | 
+*StorageApi* | [**search_record**](docs/StorageApi.md#search_record) | **GET** /storage/search/{term} | 
 *StorageApi* | [**upsert_by_key_from_storage**](docs/StorageApi.md#upsert_by_key_from_storage) | **PUT** /storage/{key} | 
 
 
