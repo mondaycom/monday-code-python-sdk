@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**delete_by_key_from_storage**](StorageApi.md#delete_by_key_from_storage) | **DELETE** /storage/{key} | 
 [**get_by_key_from_storage**](StorageApi.md#get_by_key_from_storage) | **GET** /storage/{key} | 
 [**increment_counter**](StorageApi.md#increment_counter) | **PUT** /storage/counter/increment | 
+[**search_record**](StorageApi.md#search_record) | **GET** /storage/search/{term} | 
 [**upsert_by_key_from_storage**](StorageApi.md#upsert_by_key_from_storage) | **PUT** /storage/{key} | 
 
 
@@ -210,6 +211,76 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search_record**
+> object search_record(term, x_monday_access_token, cursor=cursor)
+
+
+
+### Example
+
+
+```python
+import monday_code
+from monday_code.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:59999
+# See configuration.py for a list of all supported configuration parameters.
+configuration = monday_code.Configuration(
+    host = "http://localhost:59999"
+)
+
+
+# Enter a context with an instance of the API client
+with monday_code.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = monday_code.StorageApi(api_client)
+    term = 'term_example' # str | 
+    x_monday_access_token = 'x_monday_access_token_example' # str | 
+    cursor = 'cursor_example' # str |  (optional)
+
+    try:
+        api_response = api_instance.search_record(term, x_monday_access_token, cursor=cursor)
+        print("The response of StorageApi->search_record:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling StorageApi->search_record: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **term** | **str**|  | 
+ **x_monday_access_token** | **str**|  | 
+ **cursor** | **str**|  | [optional] 
+
+### Return type
+
+**object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
