@@ -11,8 +11,6 @@ Method | HTTP request | Description
 # **get_secret**
 > str get_secret(name)
 
-
-
 ### Example
 
 
@@ -75,8 +73,6 @@ No authorization required
 
 # **get_secret_keys**
 > List[str] get_secret_keys()
-
-
 
 ### Example
 

@@ -10,8 +10,6 @@ Method | HTTP request | Description
 # **write_log**
 > write_log(write_log_request_body)
 
-
-
 ### Example
 
 

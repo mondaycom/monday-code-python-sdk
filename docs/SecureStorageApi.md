@@ -12,8 +12,6 @@ Method | HTTP request | Description
 # **delete_secure_storage**
 > delete_secure_storage(key)
 
-
-
 ### Example
 
 
@@ -73,8 +71,6 @@ No authorization required
 
 # **get_secure_storage**
 > JsonDataContract get_secure_storage(key)
-
-
 
 ### Example
 
@@ -139,8 +135,6 @@ No authorization required
 
 # **put_secure_storage**
 > bool put_secure_storage(key, json_data_contract)
-
-
 
 ### Example
 
