@@ -11,8 +11,6 @@ Method | HTTP request | Description
 # **publish_message**
 > PublishMessageResponse publish_message(publish_message_params)
 
-
-
 ### Example
 
 
@@ -76,8 +74,6 @@ No authorization required
 
 # **validate_secret**
 > ValidateSecretResponse validate_secret(validate_secret_params)
-
-
 
 ### Example
 

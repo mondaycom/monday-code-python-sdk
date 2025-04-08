@@ -14,8 +14,6 @@ Method | HTTP request | Description
 # **delete_by_key_from_storage**
 > delete_by_key_from_storage(key, x_monday_access_token)
 
-
-
 ### Example
 
 
@@ -77,8 +75,6 @@ No authorization required
 
 # **get_by_key_from_storage**
 > StorageDataContract get_by_key_from_storage(key, shared, x_monday_access_token)
-
-
 
 ### Example
 
@@ -149,8 +145,6 @@ No authorization required
 # **increment_counter**
 > IncrementCounter200Response increment_counter(x_monday_access_token, increment_counter_params)
 
-
-
 ### Example
 
 
@@ -216,8 +210,6 @@ No authorization required
 
 # **search_record**
 > object search_record(term, x_monday_access_token, cursor=cursor)
-
-
 
 ### Example
 
@@ -285,9 +277,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upsert_by_key_from_storage**
-> UpsertByKeyFromStorage200Response upsert_by_key_from_storage(key, x_monday_access_token, json_data_contract, shared=shared, previous_version=previous_version)
-
-
+> UpsertByKeyFromStorage200Response upsert_by_key_from_storage(key, x_monday_access_token, json_data_contract, shared=shared, previous_version=previous_version, ttl=ttl)
 
 ### Example
 
@@ -315,9 +305,10 @@ with monday_code.ApiClient(configuration) as api_client:
     json_data_contract = monday_code.JsonDataContract() # JsonDataContract | 
     shared = True # bool |  (optional)
     previous_version = 'previous_version_example' # str |  (optional)
+    ttl = 3.4 # float |  (optional)
 
     try:
-        api_response = api_instance.upsert_by_key_from_storage(key, x_monday_access_token, json_data_contract, shared=shared, previous_version=previous_version)
+        api_response = api_instance.upsert_by_key_from_storage(key, x_monday_access_token, json_data_contract, shared=shared, previous_version=previous_version, ttl=ttl)
         print("The response of StorageApi->upsert_by_key_from_storage:\n")
         pprint(api_response)
     except Exception as e:
@@ -336,6 +327,7 @@ Name | Type | Description  | Notes
  **json_data_contract** | [**JsonDataContract**](JsonDataContract.md)|  | 
  **shared** | **bool**|  | [optional] 
  **previous_version** | **str**|  | [optional] 
+ **ttl** | **float**|  | [optional] 
 
 ### Return type
 
