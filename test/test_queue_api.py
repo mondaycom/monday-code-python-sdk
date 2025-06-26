@@ -17,22 +17,22 @@ import unittest
 from monday_code.api.queue_api import QueueApi
 
 
-class TestQueueApi(unittest.TestCase):
+class TestQueueApi(unittest.IsolatedAsyncioTestCase):
     """QueueApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = QueueApi()
 
-    def tearDown(self) -> None:
+    async def asyncTearDown(self) -> None:
         pass
 
-    def test_publish_message(self) -> None:
+    async def test_publish_message(self) -> None:
         """Test case for publish_message
 
         """
         pass
 
-    def test_validate_secret(self) -> None:
+    async def test_validate_secret(self) -> None:
         """Test case for validate_secret
 
         """

@@ -10,6 +10,8 @@ Method | HTTP request | Description
 # **write_log**
 > write_log(write_log_request_body)
 
+
+
 ### Example
 
 
@@ -27,13 +29,13 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.LogsApi(api_client)
     write_log_request_body = monday_code.WriteLogRequestBody() # WriteLogRequestBody | 
 
     try:
-        api_instance.write_log(write_log_request_body)
+        await api_instance.write_log(write_log_request_body)
     except Exception as e:
         print("Exception when calling LogsApi->write_log: %s\n" % e)
 ```

@@ -11,6 +11,8 @@ Method | HTTP request | Description
 # **get_secret**
 > str get_secret(name)
 
+
+
 ### Example
 
 
@@ -27,13 +29,13 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.SecretsApi(api_client)
     name = 'name_example' # str | 
 
     try:
-        api_response = api_instance.get_secret(name)
+        api_response = await api_instance.get_secret(name)
         print("The response of SecretsApi->get_secret:\n")
         pprint(api_response)
     except Exception as e:
@@ -74,6 +76,8 @@ No authorization required
 # **get_secret_keys**
 > List[str] get_secret_keys()
 
+
+
 ### Example
 
 
@@ -90,12 +94,12 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.SecretsApi(api_client)
 
     try:
-        api_response = api_instance.get_secret_keys()
+        api_response = await api_instance.get_secret_keys()
         print("The response of SecretsApi->get_secret_keys:\n")
         pprint(api_response)
     except Exception as e:

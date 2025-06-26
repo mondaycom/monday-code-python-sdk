@@ -43,7 +43,7 @@ class StorageApi:
 
 
     @validate_call
-    def delete_by_key_from_storage(
+    async def delete_by_key_from_storage(
         self,
         key: StrictStr,
         x_monday_access_token: StrictStr,
@@ -101,11 +101,11 @@ class StorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -113,7 +113,7 @@ class StorageApi:
 
 
     @validate_call
-    def delete_by_key_from_storage_with_http_info(
+    async def delete_by_key_from_storage_with_http_info(
         self,
         key: StrictStr,
         x_monday_access_token: StrictStr,
@@ -171,11 +171,11 @@ class StorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -183,7 +183,7 @@ class StorageApi:
 
 
     @validate_call
-    def delete_by_key_from_storage_without_preload_content(
+    async def delete_by_key_from_storage_without_preload_content(
         self,
         key: StrictStr,
         x_monday_access_token: StrictStr,
@@ -241,7 +241,7 @@ class StorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -308,7 +308,7 @@ class StorageApi:
 
 
     @validate_call
-    def get_by_key_from_storage(
+    async def get_by_key_from_storage(
         self,
         key: StrictStr,
         shared: StrictBool,
@@ -372,11 +372,11 @@ class StorageApi:
             '404': "GetByKeyFromStorage404Response",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -384,7 +384,7 @@ class StorageApi:
 
 
     @validate_call
-    def get_by_key_from_storage_with_http_info(
+    async def get_by_key_from_storage_with_http_info(
         self,
         key: StrictStr,
         shared: StrictBool,
@@ -448,11 +448,11 @@ class StorageApi:
             '404': "GetByKeyFromStorage404Response",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -460,7 +460,7 @@ class StorageApi:
 
 
     @validate_call
-    def get_by_key_from_storage_without_preload_content(
+    async def get_by_key_from_storage_without_preload_content(
         self,
         key: StrictStr,
         shared: StrictBool,
@@ -524,7 +524,7 @@ class StorageApi:
             '404': "GetByKeyFromStorage404Response",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -603,7 +603,7 @@ class StorageApi:
 
 
     @validate_call
-    def increment_counter(
+    async def increment_counter(
         self,
         x_monday_access_token: StrictStr,
         increment_counter_params: IncrementCounterParams,
@@ -661,11 +661,11 @@ class StorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IncrementCounter200Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -673,7 +673,7 @@ class StorageApi:
 
 
     @validate_call
-    def increment_counter_with_http_info(
+    async def increment_counter_with_http_info(
         self,
         x_monday_access_token: StrictStr,
         increment_counter_params: IncrementCounterParams,
@@ -731,11 +731,11 @@ class StorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IncrementCounter200Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -743,7 +743,7 @@ class StorageApi:
 
 
     @validate_call
-    def increment_counter_without_preload_content(
+    async def increment_counter_without_preload_content(
         self,
         x_monday_access_token: StrictStr,
         increment_counter_params: IncrementCounterParams,
@@ -801,7 +801,7 @@ class StorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "IncrementCounter200Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -888,7 +888,7 @@ class StorageApi:
 
 
     @validate_call
-    def search_record(
+    async def search_record(
         self,
         term: StrictStr,
         x_monday_access_token: StrictStr,
@@ -952,11 +952,11 @@ class StorageApi:
             '404': "GetByKeyFromStorage404Response",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -964,7 +964,7 @@ class StorageApi:
 
 
     @validate_call
-    def search_record_with_http_info(
+    async def search_record_with_http_info(
         self,
         term: StrictStr,
         x_monday_access_token: StrictStr,
@@ -1028,11 +1028,11 @@ class StorageApi:
             '404': "GetByKeyFromStorage404Response",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1040,7 +1040,7 @@ class StorageApi:
 
 
     @validate_call
-    def search_record_without_preload_content(
+    async def search_record_without_preload_content(
         self,
         term: StrictStr,
         x_monday_access_token: StrictStr,
@@ -1104,7 +1104,7 @@ class StorageApi:
             '404': "GetByKeyFromStorage404Response",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1183,7 +1183,7 @@ class StorageApi:
 
 
     @validate_call
-    def upsert_by_key_from_storage(
+    async def upsert_by_key_from_storage(
         self,
         key: StrictStr,
         x_monday_access_token: StrictStr,
@@ -1257,11 +1257,11 @@ class StorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UpsertByKeyFromStorage200Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1269,7 +1269,7 @@ class StorageApi:
 
 
     @validate_call
-    def upsert_by_key_from_storage_with_http_info(
+    async def upsert_by_key_from_storage_with_http_info(
         self,
         key: StrictStr,
         x_monday_access_token: StrictStr,
@@ -1343,11 +1343,11 @@ class StorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UpsertByKeyFromStorage200Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1355,7 +1355,7 @@ class StorageApi:
 
 
     @validate_call
-    def upsert_by_key_from_storage_without_preload_content(
+    async def upsert_by_key_from_storage_without_preload_content(
         self,
         key: StrictStr,
         x_monday_access_token: StrictStr,
@@ -1429,7 +1429,7 @@ class StorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "UpsertByKeyFromStorage200Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

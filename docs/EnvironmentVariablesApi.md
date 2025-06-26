@@ -11,6 +11,8 @@ Method | HTTP request | Description
 # **get_environment_variable**
 > object get_environment_variable(name)
 
+
+
 ### Example
 
 
@@ -27,13 +29,13 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.EnvironmentVariablesApi(api_client)
     name = 'name_example' # str | 
 
     try:
-        api_response = api_instance.get_environment_variable(name)
+        api_response = await api_instance.get_environment_variable(name)
         print("The response of EnvironmentVariablesApi->get_environment_variable:\n")
         pprint(api_response)
     except Exception as e:
@@ -74,6 +76,8 @@ No authorization required
 # **get_environment_variable_keys**
 > List[str] get_environment_variable_keys()
 
+
+
 ### Example
 
 
@@ -90,12 +94,12 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.EnvironmentVariablesApi(api_client)
 
     try:
-        api_response = api_instance.get_environment_variable_keys()
+        api_response = await api_instance.get_environment_variable_keys()
         print("The response of EnvironmentVariablesApi->get_environment_variable_keys:\n")
         pprint(api_response)
     except Exception as e:
