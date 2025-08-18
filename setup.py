@@ -1,4 +1,3 @@
-from pathlib import Path
 # coding: utf-8
 
 """
@@ -32,6 +31,7 @@ REQUIRES = [
 ]
 
 # read the contents of your README file
+from pathlib import Path
 
 this_directory = Path(__file__).parent
 long_description = (this_directory / "README_FOR_PYPI.md").read_text()
