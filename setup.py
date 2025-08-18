@@ -1,3 +1,4 @@
+from pathlib import Path
 # coding: utf-8
 
 """
@@ -21,7 +22,7 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "monday-code"
-VERSION = "0.2.4"
+VERSION = "1.0.0"
 PYTHON_REQUIRES = ">= 3.9"
 REQUIRES = [
     "urllib3 >= 2.1.0, < 3.0.0",
@@ -31,7 +32,6 @@ REQUIRES = [
 ]
 
 # read the contents of your README file
-from pathlib import Path
 
 this_directory = Path(__file__).parent
 long_description = (this_directory / "README_FOR_PYPI.md").read_text()
