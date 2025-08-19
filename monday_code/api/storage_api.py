@@ -27,6 +27,7 @@ from monday_code.models.upsert_by_key_from_storage200_response import UpsertByKe
 from monday_code.api_client import ApiClient, RequestSerialized
 from monday_code.api_response import ApiResponse
 from monday_code.rest import RESTResponseType
+from monday_code.sdk_logger import log_sdk_usage
 
 
 class StorageApi:
@@ -87,7 +88,10 @@ class StorageApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
+
+        # Log storage usage
+        log_sdk_usage(f"🗑️ Deleting storage key: '{key}'")
 
         _param = self._delete_by_key_from_storage_serialize(
             key=key,
@@ -355,7 +359,10 @@ class StorageApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
+
+        # Log storage usage
+        log_sdk_usage(f"💾 Getting storage key: '{key}', shared: {shared}")
 
         _param = self._get_by_key_from_storage_serialize(
             key=key,
@@ -647,7 +654,10 @@ class StorageApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
+
+        # Log storage usage
+        log_sdk_usage("🔢 Incrementing counter in storage")
 
         _param = self._increment_counter_serialize(
             x_monday_access_token=x_monday_access_token,
@@ -935,7 +945,10 @@ class StorageApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
+
+        # Log storage usage
+        log_sdk_usage(f"🔍 Searching storage records for term: '{term}'")
 
         _param = self._search_record_serialize(
             term=term,
@@ -1239,7 +1252,10 @@ class StorageApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
+
+        # Log storage usage
+        log_sdk_usage(f"💾 Upserting storage key: '{key}', shared: {shared}, ttl: {ttl}")
 
         _param = self._upsert_by_key_from_storage_serialize(
             key=key,

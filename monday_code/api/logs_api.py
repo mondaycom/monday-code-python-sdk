@@ -21,6 +21,7 @@ from monday_code.models.write_log_request_body import WriteLogRequestBody
 from monday_code.api_client import ApiClient, RequestSerialized
 from monday_code.api_response import ApiResponse
 from monday_code.rest import RESTResponseType
+from monday_code.sdk_logger import log_sdk_usage
 
 
 class LogsApi:
@@ -34,7 +35,6 @@ class LogsApi:
         if api_client is None:
             api_client = ApiClient.get_default()
         self.api_client = api_client
-
 
     @validate_call
     async def write_log(
@@ -78,7 +78,10 @@ class LogsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
+
+        # Log write operation
+        log_sdk_usage("📝 Writing log entry")
 
         _param = self._write_log_serialize(
             write_log_request_body=write_log_request_body,
@@ -100,7 +103,6 @@ class LogsApi:
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
-
 
     @validate_call
     async def write_log_with_http_info(
@@ -144,7 +146,7 @@ class LogsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._write_log_serialize(
             write_log_request_body=write_log_request_body,
@@ -166,7 +168,6 @@ class LogsApi:
             response_data=response_data,
             response_types_map=_response_types_map,
         )
-
 
     @validate_call
     async def write_log_without_preload_content(
@@ -210,7 +211,7 @@ class LogsApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """ # noqa: E501
+        """  # noqa: E501
 
         _param = self._write_log_serialize(
             write_log_request_body=write_log_request_body,
@@ -228,7 +229,6 @@ class LogsApi:
             _request_timeout=_request_timeout
         )
         return response_data.response
-
 
     def _write_log_serialize(
         self,
@@ -260,8 +260,6 @@ class LogsApi:
         # process the body parameter
         if write_log_request_body is not None:
             _body_params = write_log_request_body
-
-
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -295,5 +293,3 @@ class LogsApi:
             _host=_host,
             _request_auth=_request_auth
         )
-
-
