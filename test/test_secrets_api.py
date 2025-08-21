@@ -17,22 +17,22 @@ import unittest
 from monday_code.api.secrets_api import SecretsApi
 
 
-class TestSecretsApi(unittest.TestCase):
+class TestSecretsApi(unittest.IsolatedAsyncioTestCase):
     """SecretsApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = SecretsApi()
 
-    def tearDown(self) -> None:
+    async def asyncTearDown(self) -> None:
         pass
 
-    def test_get_secret(self) -> None:
+    async def test_get_secret(self) -> None:
         """Test case for get_secret
 
         """
         pass
 
-    def test_get_secret_keys(self) -> None:
+    async def test_get_secret_keys(self) -> None:
         """Test case for get_secret_keys
 
         """

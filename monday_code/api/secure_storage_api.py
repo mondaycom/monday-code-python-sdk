@@ -38,7 +38,7 @@ class SecureStorageApi:
 
 
     @validate_call
-    def delete_secure_storage(
+    async def delete_secure_storage(
         self,
         key: StrictStr,
         _request_timeout: Union[
@@ -92,11 +92,11 @@ class SecureStorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -104,7 +104,7 @@ class SecureStorageApi:
 
 
     @validate_call
-    def delete_secure_storage_with_http_info(
+    async def delete_secure_storage_with_http_info(
         self,
         key: StrictStr,
         _request_timeout: Union[
@@ -158,11 +158,11 @@ class SecureStorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -170,7 +170,7 @@ class SecureStorageApi:
 
 
     @validate_call
-    def delete_secure_storage_without_preload_content(
+    async def delete_secure_storage_without_preload_content(
         self,
         key: StrictStr,
         _request_timeout: Union[
@@ -224,7 +224,7 @@ class SecureStorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -288,7 +288,7 @@ class SecureStorageApi:
 
 
     @validate_call
-    def get_secure_storage(
+    async def get_secure_storage(
         self,
         key: StrictStr,
         _request_timeout: Union[
@@ -343,11 +343,11 @@ class SecureStorageApi:
             '200': "JsonDataContract",
             '404': "GetByKeyFromStorage404Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -355,7 +355,7 @@ class SecureStorageApi:
 
 
     @validate_call
-    def get_secure_storage_with_http_info(
+    async def get_secure_storage_with_http_info(
         self,
         key: StrictStr,
         _request_timeout: Union[
@@ -410,11 +410,11 @@ class SecureStorageApi:
             '200': "JsonDataContract",
             '404': "GetByKeyFromStorage404Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -422,7 +422,7 @@ class SecureStorageApi:
 
 
     @validate_call
-    def get_secure_storage_without_preload_content(
+    async def get_secure_storage_without_preload_content(
         self,
         key: StrictStr,
         _request_timeout: Union[
@@ -477,7 +477,7 @@ class SecureStorageApi:
             '200': "JsonDataContract",
             '404': "GetByKeyFromStorage404Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -548,7 +548,7 @@ class SecureStorageApi:
 
 
     @validate_call
-    def put_secure_storage(
+    async def put_secure_storage(
         self,
         key: StrictStr,
         json_data_contract: JsonDataContract,
@@ -606,11 +606,11 @@ class SecureStorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bool",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -618,7 +618,7 @@ class SecureStorageApi:
 
 
     @validate_call
-    def put_secure_storage_with_http_info(
+    async def put_secure_storage_with_http_info(
         self,
         key: StrictStr,
         json_data_contract: JsonDataContract,
@@ -676,11 +676,11 @@ class SecureStorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bool",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -688,7 +688,7 @@ class SecureStorageApi:
 
 
     @validate_call
-    def put_secure_storage_without_preload_content(
+    async def put_secure_storage_without_preload_content(
         self,
         key: StrictStr,
         json_data_contract: JsonDataContract,
@@ -746,7 +746,7 @@ class SecureStorageApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bool",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

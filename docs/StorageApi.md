@@ -14,6 +14,8 @@ Method | HTTP request | Description
 # **delete_by_key_from_storage**
 > delete_by_key_from_storage(key, x_monday_access_token)
 
+
+
 ### Example
 
 
@@ -30,14 +32,14 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.StorageApi(api_client)
     key = 'key_example' # str | 
     x_monday_access_token = 'x_monday_access_token_example' # str | 
 
     try:
-        api_instance.delete_by_key_from_storage(key, x_monday_access_token)
+        await api_instance.delete_by_key_from_storage(key, x_monday_access_token)
     except Exception as e:
         print("Exception when calling StorageApi->delete_by_key_from_storage: %s\n" % e)
 ```
@@ -76,6 +78,8 @@ No authorization required
 # **get_by_key_from_storage**
 > StorageDataContract get_by_key_from_storage(key, shared, x_monday_access_token)
 
+
+
 ### Example
 
 
@@ -93,7 +97,7 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.StorageApi(api_client)
     key = 'key_example' # str | 
@@ -101,7 +105,7 @@ with monday_code.ApiClient(configuration) as api_client:
     x_monday_access_token = 'x_monday_access_token_example' # str | 
 
     try:
-        api_response = api_instance.get_by_key_from_storage(key, shared, x_monday_access_token)
+        api_response = await api_instance.get_by_key_from_storage(key, shared, x_monday_access_token)
         print("The response of StorageApi->get_by_key_from_storage:\n")
         pprint(api_response)
     except Exception as e:
@@ -145,6 +149,8 @@ No authorization required
 # **increment_counter**
 > IncrementCounter200Response increment_counter(x_monday_access_token, increment_counter_params)
 
+
+
 ### Example
 
 
@@ -163,14 +169,14 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.StorageApi(api_client)
     x_monday_access_token = 'x_monday_access_token_example' # str | 
     increment_counter_params = monday_code.IncrementCounterParams() # IncrementCounterParams | 
 
     try:
-        api_response = api_instance.increment_counter(x_monday_access_token, increment_counter_params)
+        api_response = await api_instance.increment_counter(x_monday_access_token, increment_counter_params)
         print("The response of StorageApi->increment_counter:\n")
         pprint(api_response)
     except Exception as e:
@@ -211,6 +217,8 @@ No authorization required
 # **search_record**
 > object search_record(term, x_monday_access_token, cursor=cursor)
 
+
+
 ### Example
 
 
@@ -227,7 +235,7 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.StorageApi(api_client)
     term = 'term_example' # str | 
@@ -235,7 +243,7 @@ with monday_code.ApiClient(configuration) as api_client:
     cursor = 'cursor_example' # str |  (optional)
 
     try:
-        api_response = api_instance.search_record(term, x_monday_access_token, cursor=cursor)
+        api_response = await api_instance.search_record(term, x_monday_access_token, cursor=cursor)
         print("The response of StorageApi->search_record:\n")
         pprint(api_response)
     except Exception as e:
@@ -279,6 +287,8 @@ No authorization required
 # **upsert_by_key_from_storage**
 > UpsertByKeyFromStorage200Response upsert_by_key_from_storage(key, x_monday_access_token, json_data_contract, shared=shared, previous_version=previous_version, ttl=ttl)
 
+
+
 ### Example
 
 
@@ -297,7 +307,7 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.StorageApi(api_client)
     key = 'key_example' # str | 
@@ -308,7 +318,7 @@ with monday_code.ApiClient(configuration) as api_client:
     ttl = 3.4 # float |  (optional)
 
     try:
-        api_response = api_instance.upsert_by_key_from_storage(key, x_monday_access_token, json_data_contract, shared=shared, previous_version=previous_version, ttl=ttl)
+        api_response = await api_instance.upsert_by_key_from_storage(key, x_monday_access_token, json_data_contract, shared=shared, previous_version=previous_version, ttl=ttl)
         print("The response of StorageApi->upsert_by_key_from_storage:\n")
         pprint(api_response)
     except Exception as e:

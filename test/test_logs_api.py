@@ -17,16 +17,16 @@ import unittest
 from monday_code.api.logs_api import LogsApi
 
 
-class TestLogsApi(unittest.TestCase):
+class TestLogsApi(unittest.IsolatedAsyncioTestCase):
     """LogsApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = LogsApi()
 
-    def tearDown(self) -> None:
+    async def asyncTearDown(self) -> None:
         pass
 
-    def test_write_log(self) -> None:
+    async def test_write_log(self) -> None:
         """Test case for write_log
 
         """

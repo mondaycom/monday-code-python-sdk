@@ -37,7 +37,7 @@ class LogsApi:
 
 
     @validate_call
-    def write_log(
+    async def write_log(
         self,
         write_log_request_body: WriteLogRequestBody,
         _request_timeout: Union[
@@ -91,11 +91,11 @@ class LogsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -103,7 +103,7 @@ class LogsApi:
 
 
     @validate_call
-    def write_log_with_http_info(
+    async def write_log_with_http_info(
         self,
         write_log_request_body: WriteLogRequestBody,
         _request_timeout: Union[
@@ -157,11 +157,11 @@ class LogsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -169,7 +169,7 @@ class LogsApi:
 
 
     @validate_call
-    def write_log_without_preload_content(
+    async def write_log_without_preload_content(
         self,
         write_log_request_body: WriteLogRequestBody,
         _request_timeout: Union[
@@ -223,7 +223,7 @@ class LogsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
