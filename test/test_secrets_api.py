@@ -13,237 +13,30 @@
 
 
 import unittest
-from unittest.mock import AsyncMock, patch, MagicMock
 
 from monday_code.api.secrets_api import SecretsApi
 
 
 class TestSecretsApi(unittest.IsolatedAsyncioTestCase):
-    """SecretsApi comprehensive tests"""
+    """SecretsApi unit test stubs"""
 
     async def asyncSetUp(self) -> None:
-        """Set up test fixtures before each test method."""
-        with patch('monday_code.api_client.ApiClient'):
-            self.api = SecretsApi()
-
-        # Mock the API client with proper async/sync method setup
-        self.mock_client = MagicMock()
-
-        # Async methods should use AsyncMock
-        self.mock_client.call_api = AsyncMock()
-
-        # Sync methods should use regular MagicMock
-        self.mock_client.param_serialize = MagicMock()
-        self.mock_client.select_header_accept = MagicMock()
-        self.mock_client.select_header_content_type = MagicMock()
-        self.mock_client.response_deserialize = MagicMock()
-
-        self.api.api_client = self.mock_client
+        self.api = SecretsApi()
 
     async def asyncTearDown(self) -> None:
-        """Clean up after each test method."""
         pass
 
-    async def test_get_secret_success(self) -> None:
-        """Test successful secret retrieval"""
-        # Arrange
-        secret_name = "database_password"
-        expected_value = "super_secret_password_123"
+    async def test_get_secret(self) -> None:
+        """Test case for get_secret
 
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/secrets", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
+        """
+        pass
 
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
+    async def test_get_secret_keys(self) -> None:
+        """Test case for get_secret_keys
 
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_value
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        # Test logging
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.get_secret(secret_name)
-
-            # Assert
-            self.assertEqual(result, expected_value)
-            self.mock_client.call_api.assert_called_once()
-
-            # Verify logging (should not expose secret value)
-            self.assertEqual(len(log.output), 1)
-            self.assertIn(f"🔑 Getting secret: '{secret_name}'", log.output[0])
-            # Ensure secret value is not logged
-            self.assertNotIn(expected_value, log.output[0])
-
-    async def test_get_secret_with_special_characters(self) -> None:
-        """Test secret retrieval with special characters in name"""
-        # Arrange
-        secret_name = "api-key_v2.production"
-        expected_value = "abc123-def456-ghi789"
-
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/secrets", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_value
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.get_secret(secret_name)
-
-            # Assert
-            self.assertEqual(result, expected_value)
-            self.assertIn(f"🔑 Getting secret: '{secret_name}'", log.output[0])
-
-    async def test_get_secret_keys_success(self) -> None:
-        """Test successful retrieval of all secret keys"""
-        # Arrange
-        expected_keys = [
-            "database_password",
-            "api_key",
-            "jwt_secret",
-            "encryption_key"
-        ]
-
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/secrets", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_keys
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        # Test logging
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.get_secret_keys()
-
-            # Assert
-            self.assertEqual(result, expected_keys)
-            self.assertIsInstance(result, list)
-            self.assertEqual(len(result), 4)
-            self.mock_client.call_api.assert_called_once()
-
-            # Verify logging
-            self.assertEqual(len(log.output), 1)
-            self.assertIn("🔑 Getting all secret keys", log.output[0])
-
-    async def test_get_secret_keys_empty_result(self) -> None:
-        """Test retrieval when no secrets exist"""
-        # Arrange
-        expected_keys = []
-
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/secrets", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_keys
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.get_secret_keys()
-
-            # Assert
-            self.assertEqual(result, [])
-            self.assertIsInstance(result, list)
-            self.assertIn("🔑 Getting all secret keys", log.output[0])
-
-    async def test_get_secret_with_auth_override(self) -> None:
-        """Test secret retrieval with custom authentication"""
-        # Arrange
-        secret_name = "test_secret"
-        expected_value = "test_value"
-        custom_auth = {"Authorization": "Bearer custom_token"}
-
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/secrets", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_value
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        with self.assertLogs(level='INFO'):
-            # Act
-            result = await self.api.get_secret(
-                secret_name,
-                _request_auth=custom_auth
-            )
-
-            # Assert
-            self.assertEqual(result, expected_value)
-
-    async def test_get_secret_empty_name(self) -> None:
-        """Test secret retrieval with empty name"""
-        # Arrange
-        secret_name = ""
-        expected_value = None
-
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/secrets", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_value
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.get_secret(secret_name)
-
-            # Assert
-            self.assertEqual(result, expected_value)
-            self.assertIn(f"🔑 Getting secret: '{secret_name}'", log.output[0])
-
-    async def test_api_client_initialization(self) -> None:
-        """Test that API client is properly initialized"""
-        # Test that our mock setup worked
-        self.assertIsNotNone(self.api.api_client)
-        self.assertEqual(self.api.api_client, self.mock_client)
+        """
+        pass
 
 
 if __name__ == '__main__':

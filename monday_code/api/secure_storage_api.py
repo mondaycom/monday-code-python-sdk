@@ -22,7 +22,6 @@ from monday_code.models.json_data_contract import JsonDataContract
 from monday_code.api_client import ApiClient, RequestSerialized
 from monday_code.api_response import ApiResponse
 from monday_code.rest import RESTResponseType
-from monday_code.sdk_logger import log_sdk_usage
 
 
 class SecureStorageApi:
@@ -36,6 +35,7 @@ class SecureStorageApi:
         if api_client is None:
             api_client = ApiClient.get_default()
         self.api_client = api_client
+
 
     @validate_call
     async def delete_secure_storage(
@@ -79,10 +79,7 @@ class SecureStorageApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
-
-        # Log secure storage usage
-        log_sdk_usage(f"🔐 Deleting secure storage key: '{key}'")
+        """ # noqa: E501
 
         _param = self._delete_secure_storage_serialize(
             key=key,
@@ -104,6 +101,7 @@ class SecureStorageApi:
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
+
 
     @validate_call
     async def delete_secure_storage_with_http_info(
@@ -147,7 +145,7 @@ class SecureStorageApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._delete_secure_storage_serialize(
             key=key,
@@ -169,6 +167,7 @@ class SecureStorageApi:
             response_data=response_data,
             response_types_map=_response_types_map,
         )
+
 
     @validate_call
     async def delete_secure_storage_without_preload_content(
@@ -212,7 +211,7 @@ class SecureStorageApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._delete_secure_storage_serialize(
             key=key,
@@ -230,6 +229,7 @@ class SecureStorageApi:
             _request_timeout=_request_timeout
         )
         return response_data.response
+
 
     def _delete_secure_storage_serialize(
         self,
@@ -262,6 +262,9 @@ class SecureStorageApi:
         # process the form parameters
         # process the body parameter
 
+
+
+
         # authentication setting
         _auth_settings: List[str] = [
         ]
@@ -280,6 +283,9 @@ class SecureStorageApi:
             _host=_host,
             _request_auth=_request_auth
         )
+
+
+
 
     @validate_call
     async def get_secure_storage(
@@ -323,10 +329,7 @@ class SecureStorageApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
-
-        # Log secure storage usage
-        log_sdk_usage(f"🔐 Getting secure storage key: '{key}'")
+        """ # noqa: E501
 
         _param = self._get_secure_storage_serialize(
             key=key,
@@ -349,6 +352,7 @@ class SecureStorageApi:
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
+
 
     @validate_call
     async def get_secure_storage_with_http_info(
@@ -392,7 +396,7 @@ class SecureStorageApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._get_secure_storage_serialize(
             key=key,
@@ -415,6 +419,7 @@ class SecureStorageApi:
             response_data=response_data,
             response_types_map=_response_types_map,
         )
+
 
     @validate_call
     async def get_secure_storage_without_preload_content(
@@ -458,7 +463,7 @@ class SecureStorageApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._get_secure_storage_serialize(
             key=key,
@@ -477,6 +482,7 @@ class SecureStorageApi:
             _request_timeout=_request_timeout
         )
         return response_data.response
+
 
     def _get_secure_storage_serialize(
         self,
@@ -509,6 +515,7 @@ class SecureStorageApi:
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
@@ -516,6 +523,7 @@ class SecureStorageApi:
                     'application/json'
                 ]
             )
+
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -535,6 +543,9 @@ class SecureStorageApi:
             _host=_host,
             _request_auth=_request_auth
         )
+
+
+
 
     @validate_call
     async def put_secure_storage(
@@ -581,10 +592,7 @@ class SecureStorageApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
-
-        # Log secure storage usage
-        log_sdk_usage(f"🔐 Putting secure storage key: '{key}'")
+        """ # noqa: E501
 
         _param = self._put_secure_storage_serialize(
             key=key,
@@ -607,6 +615,7 @@ class SecureStorageApi:
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
+
 
     @validate_call
     async def put_secure_storage_with_http_info(
@@ -653,7 +662,7 @@ class SecureStorageApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._put_secure_storage_serialize(
             key=key,
@@ -676,6 +685,7 @@ class SecureStorageApi:
             response_data=response_data,
             response_types_map=_response_types_map,
         )
+
 
     @validate_call
     async def put_secure_storage_without_preload_content(
@@ -722,7 +732,7 @@ class SecureStorageApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._put_secure_storage_serialize(
             key=key,
@@ -741,6 +751,7 @@ class SecureStorageApi:
             _request_timeout=_request_timeout
         )
         return response_data.response
+
 
     def _put_secure_storage_serialize(
         self,
@@ -775,6 +786,7 @@ class SecureStorageApi:
         # process the body parameter
         if json_data_contract is not None:
             _body_params = json_data_contract
+
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
@@ -816,3 +828,5 @@ class SecureStorageApi:
             _host=_host,
             _request_auth=_request_auth
         )
+
+

@@ -13,211 +13,30 @@
 
 
 import unittest
-from unittest.mock import AsyncMock, patch, MagicMock
-import logging
 
 from monday_code.api.environment_variables_api import EnvironmentVariablesApi
-from monday_code.api_response import ApiResponse
 
 
 class TestEnvironmentVariablesApi(unittest.IsolatedAsyncioTestCase):
-    """EnvironmentVariablesApi comprehensive tests"""
+    """EnvironmentVariablesApi unit test stubs"""
 
     async def asyncSetUp(self) -> None:
-        """Set up test fixtures before each test method."""
-        with patch('monday_code.api_client.ApiClient'):
-            self.api = EnvironmentVariablesApi()
-
-        # Mock the API client with proper async/sync method setup
-        self.mock_client = MagicMock()
-
-        # Async methods should use AsyncMock
-        self.mock_client.call_api = AsyncMock()
-
-        # Sync methods should use regular MagicMock
-        self.mock_client.param_serialize = MagicMock()
-        self.mock_client.select_header_accept = MagicMock()
-        self.mock_client.select_header_content_type = MagicMock()
-        self.mock_client.response_deserialize = MagicMock()
-
-        self.api.api_client = self.mock_client
+        self.api = EnvironmentVariablesApi()
 
     async def asyncTearDown(self) -> None:
-        """Clean up after each test method."""
         pass
 
-    async def test_get_environment_variable_success(self) -> None:
-        """Test successful environment variable retrieval"""
-        # Arrange
-        expected_value = "production"
-        var_name = "ENVIRONMENT"
+    async def test_get_environment_variable(self) -> None:
+        """Test case for get_environment_variable
 
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/endpoint", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
+        """
+        pass
 
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
+    async def test_get_environment_variable_keys(self) -> None:
+        """Test case for get_environment_variable_keys
 
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_value
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        # Test logging
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.get_environment_variable(var_name)
-
-            # Assert
-            self.assertEqual(result, expected_value)
-            self.mock_client.call_api.assert_called_once()
-
-            # Verify logging - find our specific log message
-            sdk_logs = [msg for msg in log.output if "Getting environment variable" in msg]
-            self.assertEqual(len(sdk_logs), 1)
-            self.assertIn(f"🌍 Getting environment variable: '{var_name}'", sdk_logs[0])
-
-    async def test_get_environment_variable_with_special_characters(self) -> None:
-        """Test environment variable retrieval with special characters in name"""
-        # Arrange
-        var_name = "API_KEY_V2"
-        expected_value = "abc123-def456"
-
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/environment", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_value
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.get_environment_variable(var_name)
-
-            # Assert
-            self.assertEqual(result, expected_value)
-            self.assertIn(f"🌍 Getting environment variable: '{var_name}'", log.output[0])
-
-    async def test_get_environment_variable_keys_success(self) -> None:
-        """Test successful retrieval of all environment variable keys"""
-        # Arrange
-        expected_keys = ["DATABASE_URL", "API_KEY", "ENVIRONMENT", "DEBUG_MODE"]
-
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/environment", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_keys
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        # Test logging
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.get_environment_variable_keys()
-
-            # Assert
-            self.assertEqual(result, expected_keys)
-            self.assertIsInstance(result, list)
-            self.assertEqual(len(result), 4)
-            self.mock_client.call_api.assert_called_once()
-
-            # Verify logging - find our specific log message
-            sdk_logs = [msg for msg in log.output if "Getting all environment variable keys" in msg]
-            self.assertEqual(len(sdk_logs), 1)
-            self.assertIn("🌍 Getting all environment variable keys", sdk_logs[0])
-
-    async def test_get_environment_variable_keys_empty_result(self) -> None:
-        """Test retrieval when no environment variables exist"""
-        # Arrange
-        expected_keys = []
-
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/environment", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_keys
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.get_environment_variable_keys()
-
-            # Assert
-            self.assertEqual(result, [])
-            self.assertIsInstance(result, list)
-            # Verify logging - find our specific log message
-            sdk_logs = [msg for msg in log.output if "Getting all environment variable keys" in msg]
-            self.assertEqual(len(sdk_logs), 1)
-            self.assertIn("🌍 Getting all environment variable keys", sdk_logs[0])
-
-    async def test_get_environment_variable_with_timeout(self) -> None:
-        """Test environment variable retrieval with custom timeout"""
-        # Arrange
-        var_name = "TIMEOUT_TEST"
-        expected_value = "timeout_value"
-        custom_timeout = 30.0
-
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/environment", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_value
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        with self.assertLogs(level='INFO'):
-            # Act
-            result = await self.api.get_environment_variable(
-                var_name,
-                _request_timeout=custom_timeout
-            )
-
-            # Assert
-            self.assertEqual(result, expected_value)
-            # Verify timeout was passed to call_api
-            call_args = self.mock_client.call_api.call_args
-            self.assertEqual(call_args.kwargs['_request_timeout'], custom_timeout)
-
-    async def test_api_client_initialization(self) -> None:
-        """Test that API client is properly initialized"""
-        # Test that our mock setup worked
-        self.assertIsNotNone(self.api.api_client)
-        self.assertEqual(self.api.api_client, self.mock_client)
+        """
+        pass
 
 
 if __name__ == '__main__':

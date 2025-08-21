@@ -24,7 +24,6 @@ from monday_code.models.validate_secret_response import ValidateSecretResponse
 from monday_code.api_client import ApiClient, RequestSerialized
 from monday_code.api_response import ApiResponse
 from monday_code.rest import RESTResponseType
-from monday_code.sdk_logger import log_sdk_usage
 
 
 class QueueApi:
@@ -38,6 +37,7 @@ class QueueApi:
         if api_client is None:
             api_client = ApiClient.get_default()
         self.api_client = api_client
+
 
     @validate_call
     async def publish_message(
@@ -81,10 +81,7 @@ class QueueApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
-
-        # Log queue usage
-        log_sdk_usage("📬 Publishing message to queue")
+        """ # noqa: E501
 
         _param = self._publish_message_serialize(
             publish_message_params=publish_message_params,
@@ -106,6 +103,7 @@ class QueueApi:
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
+
 
     @validate_call
     async def publish_message_with_http_info(
@@ -149,7 +147,7 @@ class QueueApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._publish_message_serialize(
             publish_message_params=publish_message_params,
@@ -171,6 +169,7 @@ class QueueApi:
             response_data=response_data,
             response_types_map=_response_types_map,
         )
+
 
     @validate_call
     async def publish_message_without_preload_content(
@@ -214,7 +213,7 @@ class QueueApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._publish_message_serialize(
             publish_message_params=publish_message_params,
@@ -232,6 +231,7 @@ class QueueApi:
             _request_timeout=_request_timeout
         )
         return response_data.response
+
 
     def _publish_message_serialize(
         self,
@@ -263,6 +263,7 @@ class QueueApi:
         # process the body parameter
         if publish_message_params is not None:
             _body_params = publish_message_params
+
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
@@ -304,6 +305,9 @@ class QueueApi:
             _host=_host,
             _request_auth=_request_auth
         )
+
+
+
 
     @validate_call
     async def validate_secret(
@@ -347,10 +351,7 @@ class QueueApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
-
-        # Log queue usage
-        log_sdk_usage("📬 Validating secret in queue")
+        """ # noqa: E501
 
         _param = self._validate_secret_serialize(
             validate_secret_params=validate_secret_params,
@@ -372,6 +373,7 @@ class QueueApi:
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
+
 
     @validate_call
     async def validate_secret_with_http_info(
@@ -415,7 +417,7 @@ class QueueApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._validate_secret_serialize(
             validate_secret_params=validate_secret_params,
@@ -437,6 +439,7 @@ class QueueApi:
             response_data=response_data,
             response_types_map=_response_types_map,
         )
+
 
     @validate_call
     async def validate_secret_without_preload_content(
@@ -480,7 +483,7 @@ class QueueApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._validate_secret_serialize(
             validate_secret_params=validate_secret_params,
@@ -498,6 +501,7 @@ class QueueApi:
             _request_timeout=_request_timeout
         )
         return response_data.response
+
 
     def _validate_secret_serialize(
         self,
@@ -529,6 +533,7 @@ class QueueApi:
         # process the body parameter
         if validate_secret_params is not None:
             _body_params = validate_secret_params
+
 
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
@@ -570,3 +575,5 @@ class QueueApi:
             _host=_host,
             _request_auth=_request_auth
         )
+
+

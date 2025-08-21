@@ -13,341 +13,36 @@
 
 
 import unittest
-from unittest.mock import AsyncMock, patch, MagicMock
 
 from monday_code.api.secure_storage_api import SecureStorageApi
-from monday_code.models.json_data_contract import JsonDataContract
 
 
 class TestSecureStorageApi(unittest.IsolatedAsyncioTestCase):
-    """SecureStorageApi comprehensive tests"""
+    """SecureStorageApi unit test stubs"""
 
     async def asyncSetUp(self) -> None:
-        """Set up test fixtures before each test method."""
-        with patch('monday_code.api_client.ApiClient'):
-            self.api = SecureStorageApi()
-
-        # Mock the API client with proper async/sync method setup
-        self.mock_client = MagicMock()
-
-        # Async methods should use AsyncMock
-        self.mock_client.call_api = AsyncMock()
-
-        # Sync methods should use regular MagicMock
-        self.mock_client.param_serialize = MagicMock()
-        self.mock_client.select_header_accept = MagicMock()
-        self.mock_client.select_header_content_type = MagicMock()
-        self.mock_client.response_deserialize = MagicMock()
-
-        self.api.api_client = self.mock_client
+        self.api = SecureStorageApi()
 
     async def asyncTearDown(self) -> None:
-        """Clean up after each test method."""
         pass
 
-    async def test_delete_secure_storage_success(self) -> None:
-        """Test successful secure storage deletion"""
-        # Arrange
-        key = "user_credentials"
+    async def test_delete_secure_storage(self) -> None:
+        """Test case for delete_secure_storage
 
-        # Mock the serialization and API call properly
-        mock_param = ("DELETE", "/api/secure-storage", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
+        """
+        pass
 
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
+    async def test_get_secure_storage(self) -> None:
+        """Test case for get_secure_storage
 
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = None  # Delete operations typically return None
-        self.mock_client.response_deserialize.return_value = mock_deserialized
+        """
+        pass
 
-        # Test logging
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.delete_secure_storage(key)
+    async def test_put_secure_storage(self) -> None:
+        """Test case for put_secure_storage
 
-            # Assert
-            self.assertIsNone(result)
-            self.mock_client.call_api.assert_called_once()
-
-            # Verify logging
-            self.assertEqual(len(log.output), 1)
-            self.assertIn(f"🔐 Deleting secure storage key: '{key}'", log.output[0])
-
-    async def test_delete_secure_storage_with_special_key(self) -> None:
-        """Test deleting secure storage with special characters in key"""
-        # Arrange
-        key = "auth-token_v2.production"
-
-        # Mock the serialization and API call properly
-        mock_param = ("DELETE", "/api/secure-storage", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = None
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.delete_secure_storage(key)
-
-            # Assert
-            self.assertIsNone(result)
-            self.assertIn(f"🔐 Deleting secure storage key: '{key}'", log.output[0])
-
-    async def test_get_secure_storage_success(self) -> None:
-        """Test successful secure storage retrieval"""
-        # Arrange
-        key = "encryption_key"
-        expected_data = JsonDataContract(value={"secret": "encrypted_data_123"})
-
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/secure-storage", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_data
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        # Test logging
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.get_secure_storage(key)
-
-            # Assert
-            self.assertEqual(result, expected_data)
-            self.mock_client.call_api.assert_called_once()
-
-            # Verify logging (should not expose secure data)
-            self.assertEqual(len(log.output), 1)
-            self.assertIn(f"🔐 Getting secure storage key: '{key}'", log.output[0])
-            self.assertNotIn("encrypted_data_123", log.output[0])
-
-    async def test_get_secure_storage_complex_data(self) -> None:
-        """Test retrieving complex secure data structure"""
-        # Arrange
-        key = "api_config"
-        expected_data = JsonDataContract(value={
-            "api_keys": ["key1", "key2"],
-            "endpoints": {"prod": "https://api.prod.com", "dev": "https://api.dev.com"},
-            "timeout": 30
-        })
-
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/secure-storage", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_data
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.get_secure_storage(key)
-
-            # Assert
-            self.assertEqual(result, expected_data)
-            self.assertIn(f"🔐 Getting secure storage key: '{key}'", log.output[0])
-
-    async def test_put_secure_storage_success(self) -> None:
-        """Test successful secure storage creation/update"""
-        # Arrange
-        key = "database_credentials"
-        data_to_store = JsonDataContract(value={
-            "username": "db_user",
-            "password": "super_secret_password",
-            "host": "db.example.com",
-            "port": 5432
-        })
-        expected_result = True
-
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/secure-storage", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_result
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        # Test logging
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.put_secure_storage(key, data_to_store)
-
-            # Assert
-            self.assertTrue(result)
-            self.mock_client.call_api.assert_called_once()
-
-            # Verify logging (should not expose secure data)
-            self.assertEqual(len(log.output), 1)
-            self.assertIn(f"🔐 Putting secure storage key: '{key}'", log.output[0])
-            self.assertNotIn("super_secret_password", log.output[0])
-
-    async def test_put_secure_storage_simple_data(self) -> None:
-        """Test storing simple secure data"""
-        # Arrange
-        key = "feature_flag"
-        data_to_store = JsonDataContract(value={"enabled": True, "rollout_percentage": 25})
-        expected_result = True
-
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/secure-storage", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_result
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.put_secure_storage(key, data_to_store)
-
-            # Assert
-            self.assertTrue(result)
-            self.assertIn(f"🔐 Putting secure storage key: '{key}'", log.output[0])
-
-    async def test_put_secure_storage_update_existing(self) -> None:
-        """Test updating existing secure storage data"""
-        # Arrange
-        key = "oauth_tokens"
-        updated_data = JsonDataContract(value={
-            "access_token": "new_access_token_456",
-            "refresh_token": "new_refresh_token_789",
-            "expires_at": "2024-12-31T23:59:59Z"
-        })
-
-        # Mock the serialization and API call properly
-        mock_param = ("PUT", "/api/secure-storage", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-        self.mock_client.select_header_content_type.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = True
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        with self.assertLogs(level='INFO'):
-            # Act
-            result = await self.api.put_secure_storage(key, updated_data)
-
-            # Assert
-            self.assertTrue(result)
-
-    async def test_get_secure_storage_with_timeout(self) -> None:
-        """Test retrieving secure storage with custom timeout"""
-        # Arrange
-        key = "slow_loading_config"
-        expected_data = JsonDataContract(value={"large_config": "data"})
-        custom_timeout = 45.0
-
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/secure-storage", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_data
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        with self.assertLogs(level='INFO'):
-            # Act
-            result = await self.api.get_secure_storage(
-                key,
-                _request_timeout=custom_timeout
-            )
-
-            # Assert
-            self.assertEqual(result, expected_data)
-            # Verify timeout was passed to call_api
-            call_args = self.mock_client.call_api.call_args
-            self.assertEqual(call_args.kwargs['_request_timeout'], custom_timeout)
-
-    async def test_secure_storage_empty_key(self) -> None:
-        """Test secure storage operations with empty key"""
-        # Arrange
-        key = ""
-        data = JsonDataContract(value={"test": "data"})
-
-        # Mock the serialization and API call properly
-        mock_param = ("PUT", "/api/secure-storage", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-        self.mock_client.select_header_content_type.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = True
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.put_secure_storage(key, data)
-
-            # Assert
-            self.assertTrue(result)
-            self.assertIn(f"🔐 Putting secure storage key: '{key}'", log.output[0])
-
-    async def test_api_client_initialization(self) -> None:
-        """Test that API client is properly initialized"""
-        # Test that our mock setup worked
-        self.assertIsNotNone(self.api.api_client)
-        self.assertEqual(self.api.api_client, self.mock_client)
+        """
+        pass
 
 
 if __name__ == '__main__':

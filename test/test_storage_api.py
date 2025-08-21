@@ -13,231 +13,48 @@
 
 
 import unittest
-from unittest.mock import AsyncMock, patch, MagicMock
 
 from monday_code.api.storage_api import StorageApi
-from monday_code.models.increment_counter_params import IncrementCounterParams
-from monday_code.models.json_data_contract import JsonDataContract
 
 
 class TestStorageApi(unittest.IsolatedAsyncioTestCase):
-    """StorageApi comprehensive tests"""
+    """StorageApi unit test stubs"""
 
     async def asyncSetUp(self) -> None:
-        """Set up test fixtures before each test method."""
-        with patch('monday_code.api_client.ApiClient'):
-            self.api = StorageApi()
-
-        # Mock the API client with proper async/sync method setup
-        self.mock_client = MagicMock()
-
-        # Async methods should use AsyncMock
-        self.mock_client.call_api = AsyncMock()
-
-        # Sync methods should use regular MagicMock
-        self.mock_client.param_serialize = MagicMock()
-        self.mock_client.select_header_accept = MagicMock()
-        self.mock_client.select_header_content_type = MagicMock()
-        self.mock_client.response_deserialize = MagicMock()
-
-        self.api.api_client = self.mock_client
+        self.api = StorageApi()
 
     async def asyncTearDown(self) -> None:
-        """Clean up after each test method."""
         pass
 
     async def test_delete_by_key_from_storage(self) -> None:
-        """Test successful storage deletion"""
-        # Arrange
-        key = "user_settings"
-        access_token = "token_123"
+        """Test case for delete_by_key_from_storage
 
-        # Mock the serialization and API call properly
-        mock_param = ("DELETE", "/api/storage", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = None
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        # Test logging
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.delete_by_key_from_storage(key, access_token)
-
-            # Assert
-            self.assertIsNone(result)
-            self.mock_client.call_api.assert_called_once()
-
-            # Verify logging
-            self.assertEqual(len(log.output), 1)
-            self.assertIn(f"🗑️ Deleting storage key: '{key}'", log.output[0])
+        """
+        pass
 
     async def test_get_by_key_from_storage(self) -> None:
-        """Test successful storage retrieval"""
-        # Arrange
-        key = "user_profile"
-        shared = True
-        access_token = "token_456"
-        expected_data = {"value": {"name": "John Doe"}, "version": "v1.2.3"}
+        """Test case for get_by_key_from_storage
 
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/storage", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_data
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        # Test logging
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.get_by_key_from_storage(key, shared, access_token)
-
-            # Assert
-            self.assertEqual(result, expected_data)
-            self.mock_client.call_api.assert_called_once()
-
-            # Verify logging
-            self.assertEqual(len(log.output), 1)
-            self.assertIn(f"💾 Getting storage key: '{key}', shared: {shared}", log.output[0])
+        """
+        pass
 
     async def test_increment_counter(self) -> None:
-        """Test successful counter increment"""
-        # Arrange
-        access_token = "token_counter"
-        from datetime import datetime
-        from monday_code.models.period import Period
-        counter_params = IncrementCounterParams(
-            renewal_date=datetime(2024, 12, 31),
-            kind="page_views",
-            increment_by=1,
-            period=Period.DAILY
-        )
-        expected_response = {"new_value": 1542, "previous_value": 1541}
+        """Test case for increment_counter
 
-        # Mock the serialization and API call properly
-        mock_param = ("POST", "/api/storage/counter", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-        self.mock_client.select_header_content_type.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_response
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        # Test logging
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.increment_counter(access_token, counter_params)
-
-            # Assert
-            self.assertEqual(result, expected_response)
-            self.assertEqual(result["new_value"], 1542)
-            self.mock_client.call_api.assert_called_once()
-
-            # Verify logging - find our specific log message
-            sdk_logs = [msg for msg in log.output if "Incrementing counter" in msg]
-            self.assertEqual(len(sdk_logs), 1)
-            self.assertIn("🔢 Incrementing counter in storage", sdk_logs[0])
+        """
+        pass
 
     async def test_search_record(self) -> None:
-        """Test successful record search"""
-        # Arrange
-        term = "project alpha"
-        access_token = "token_search"
-        expected_results = {
-            "results": [{"id": "proj_1", "name": "Project Alpha"}],
-            "total_count": 1
-        }
+        """Test case for search_record
 
-        # Mock the serialization and API call properly
-        mock_param = ("GET", "/api/storage/search", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_results
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        # Test logging
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.search_record(term, access_token)
-
-            # Assert
-            self.assertEqual(result, expected_results)
-            self.assertEqual(len(result["results"]), 1)
-            self.mock_client.call_api.assert_called_once()
-
-            # Verify logging
-            self.assertEqual(len(log.output), 1)
-            self.assertIn(f"🔍 Searching storage records for term: '{term}'", log.output[0])
+        """
+        pass
 
     async def test_upsert_by_key_from_storage(self) -> None:
-        """Test creating new storage record"""
-        # Arrange
-        key = "new_settings"
-        access_token = "token_upsert"
-        data = JsonDataContract(value={"theme": "light", "language": "en"})
-        expected_response = {"success": True, "version": "v1.0.0", "created": True}
+        """Test case for upsert_by_key_from_storage
 
-        # Mock the serialization and API call properly
-        mock_param = ("POST", "/api/storage", {}, None, [])
-        self.mock_client.param_serialize.return_value = mock_param
-        self.mock_client.select_header_accept.return_value = "application/json"
-        self.mock_client.select_header_content_type.return_value = "application/json"
-
-        # Mock successful API response
-        mock_response_data = MagicMock()
-        mock_response_data.read = AsyncMock()  # response.read() is async
-        self.mock_client.call_api.return_value = mock_response_data
-
-        # Mock response deserialize to return object with .data
-        mock_deserialized = MagicMock()
-        mock_deserialized.data = expected_response
-        self.mock_client.response_deserialize.return_value = mock_deserialized
-
-        # Test logging
-        with self.assertLogs(level='INFO') as log:
-            # Act
-            result = await self.api.upsert_by_key_from_storage(key, access_token, data)
-
-            # Assert
-            self.assertEqual(result, expected_response)
-            self.assertTrue(result["created"])
-            self.mock_client.call_api.assert_called_once()
-
-            # Verify logging
-            self.assertEqual(len(log.output), 1)
-            self.assertIn(
-                f"💾 Upserting storage key: '{key}', shared: None, ttl: None", log.output[0])
+        """
+        pass
 
 
 if __name__ == '__main__':

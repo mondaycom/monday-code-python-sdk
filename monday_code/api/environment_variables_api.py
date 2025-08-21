@@ -22,7 +22,6 @@ from typing import Any, List
 from monday_code.api_client import ApiClient, RequestSerialized
 from monday_code.api_response import ApiResponse
 from monday_code.rest import RESTResponseType
-from monday_code.sdk_logger import log_sdk_usage
 
 
 class EnvironmentVariablesApi:
@@ -36,6 +35,7 @@ class EnvironmentVariablesApi:
         if api_client is None:
             api_client = ApiClient.get_default()
         self.api_client = api_client
+
 
     @validate_call
     async def get_environment_variable(
@@ -79,10 +79,7 @@ class EnvironmentVariablesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
-
-        # Log environment variable usage
-        log_sdk_usage(f"🌍 Getting environment variable: '{name}'")
+        """ # noqa: E501
 
         _param = self._get_environment_variable_serialize(
             name=name,
@@ -105,6 +102,7 @@ class EnvironmentVariablesApi:
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
+
 
     @validate_call
     async def get_environment_variable_with_http_info(
@@ -148,7 +146,7 @@ class EnvironmentVariablesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._get_environment_variable_serialize(
             name=name,
@@ -171,6 +169,7 @@ class EnvironmentVariablesApi:
             response_data=response_data,
             response_types_map=_response_types_map,
         )
+
 
     @validate_call
     async def get_environment_variable_without_preload_content(
@@ -214,7 +213,7 @@ class EnvironmentVariablesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._get_environment_variable_serialize(
             name=name,
@@ -233,6 +232,7 @@ class EnvironmentVariablesApi:
             _request_timeout=_request_timeout
         )
         return response_data.response
+
 
     def _get_environment_variable_serialize(
         self,
@@ -265,6 +265,7 @@ class EnvironmentVariablesApi:
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
@@ -272,6 +273,7 @@ class EnvironmentVariablesApi:
                     'application/json'
                 ]
             )
+
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -291,6 +293,9 @@ class EnvironmentVariablesApi:
             _host=_host,
             _request_auth=_request_auth
         )
+
+
+
 
     @validate_call
     async def get_environment_variable_keys(
@@ -331,10 +336,7 @@ class EnvironmentVariablesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
-
-        # Log environment variable usage
-        log_sdk_usage("🌍 Getting all environment variable keys")
+        """ # noqa: E501
 
         _param = self._get_environment_variable_keys_serialize(
             _request_auth=_request_auth,
@@ -355,6 +357,7 @@ class EnvironmentVariablesApi:
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
+
 
     @validate_call
     async def get_environment_variable_keys_with_http_info(
@@ -395,7 +398,7 @@ class EnvironmentVariablesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._get_environment_variable_keys_serialize(
             _request_auth=_request_auth,
@@ -416,6 +419,7 @@ class EnvironmentVariablesApi:
             response_data=response_data,
             response_types_map=_response_types_map,
         )
+
 
     @validate_call
     async def get_environment_variable_keys_without_preload_content(
@@ -456,7 +460,7 @@ class EnvironmentVariablesApi:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """  # noqa: E501
+        """ # noqa: E501
 
         _param = self._get_environment_variable_keys_serialize(
             _request_auth=_request_auth,
@@ -473,6 +477,7 @@ class EnvironmentVariablesApi:
             _request_timeout=_request_timeout
         )
         return response_data.response
+
 
     def _get_environment_variable_keys_serialize(
         self,
@@ -502,6 +507,7 @@ class EnvironmentVariablesApi:
         # process the form parameters
         # process the body parameter
 
+
         # set the HTTP header `Accept`
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
@@ -509,6 +515,7 @@ class EnvironmentVariablesApi:
                     'application/json'
                 ]
             )
+
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -528,3 +535,5 @@ class EnvironmentVariablesApi:
             _host=_host,
             _request_auth=_request_auth
         )
+
+
