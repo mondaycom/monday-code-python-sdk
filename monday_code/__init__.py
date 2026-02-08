@@ -19,6 +19,7 @@ __version__ = "1.0.0"
 # import apis into sdk package
 from monday_code.api.environment_variables_api import EnvironmentVariablesApi
 from monday_code.api.logs_api import LogsApi
+from monday_code.api.object_storage_api import ObjectStorageApi
 from monday_code.api.queue_api import QueueApi
 from monday_code.api.secrets_api import SecretsApi
 from monday_code.api.secure_storage_api import SecureStorageApi
@@ -36,18 +37,24 @@ from monday_code.exceptions import ApiAttributeError
 from monday_code.exceptions import ApiException
 
 # import models into sdk package
+from monday_code.models.delete_file_response import DeleteFileResponse
+from monday_code.models.download_file_response import DownloadFileResponse
+from monday_code.models.file_info import FileInfo
 from monday_code.models.get_by_key_from_storage404_response import GetByKeyFromStorage404Response
 from monday_code.models.get_by_key_from_storage500_response import GetByKeyFromStorage500Response
+from monday_code.models.get_file_info_response import GetFileInfoResponse
 from monday_code.models.increment_counter200_response import IncrementCounter200Response
 from monday_code.models.increment_counter200_response_any_of import IncrementCounter200ResponseAnyOf
 from monday_code.models.increment_counter200_response_any_of1 import IncrementCounter200ResponseAnyOf1
 from monday_code.models.increment_counter_params import IncrementCounterParams
 from monday_code.models.json_data_contract import JsonDataContract
+from monday_code.models.list_files_response import ListFilesResponse
 from monday_code.models.log_methods import LogMethods
 from monday_code.models.period import Period
 from monday_code.models.publish_message_params import PublishMessageParams
 from monday_code.models.publish_message_response import PublishMessageResponse
 from monday_code.models.storage_data_contract import StorageDataContract
+from monday_code.models.upload_file_response import UploadFileResponse
 from monday_code.models.upsert_by_key_from_storage200_response import UpsertByKeyFromStorage200Response
 from monday_code.models.upsert_by_key_from_storage200_response_any_of import UpsertByKeyFromStorage200ResponseAnyOf
 from monday_code.models.upsert_by_key_from_storage200_response_any_of1 import UpsertByKeyFromStorage200ResponseAnyOf1
