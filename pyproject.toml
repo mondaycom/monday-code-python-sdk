@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "monday_code"
-version = "1.0.0"
+version = "2.1.0"
 description = "mcode-sdk-api"
 authors = ["OpenAPI Generator Community <team@openapitools.org>"]
 license = "MIT"
