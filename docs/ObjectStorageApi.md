@@ -31,13 +31,13 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.ObjectStorageApi(api_client)
     filename = 'filename_example' # str | 
 
     try:
-        api_response = api_instance.delete_file(filename)
+        api_response = await api_instance.delete_file(filename)
         print("The response of ObjectStorageApi->delete_file:\n")
         pprint(api_response)
     except Exception as e:
@@ -95,13 +95,13 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.ObjectStorageApi(api_client)
     filename = 'filename_example' # str | 
 
     try:
-        api_response = api_instance.download_file(filename)
+        api_response = await api_instance.download_file(filename)
         print("The response of ObjectStorageApi->download_file:\n")
         pprint(api_response)
     except Exception as e:
@@ -159,13 +159,13 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.ObjectStorageApi(api_client)
     filename = 'filename_example' # str | 
 
     try:
-        api_response = api_instance.get_file_info(filename)
+        api_response = await api_instance.get_file_info(filename)
         print("The response of ObjectStorageApi->get_file_info:\n")
         pprint(api_response)
     except Exception as e:
@@ -223,7 +223,7 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.ObjectStorageApi(api_client)
     prefix = 'prefix_example' # str |  (optional)
@@ -231,7 +231,7 @@ with monday_code.ApiClient(configuration) as api_client:
     page_token = 'page_token_example' # str |  (optional)
 
     try:
-        api_response = api_instance.list_files(prefix=prefix, max_results=max_results, page_token=page_token)
+        api_response = await api_instance.list_files(prefix=prefix, max_results=max_results, page_token=page_token)
         print("The response of ObjectStorageApi->list_files:\n")
         pprint(api_response)
     except Exception as e:
@@ -295,7 +295,7 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.ObjectStorageApi(api_client)
     content = None # bytearray |  (optional)
@@ -304,7 +304,7 @@ with monday_code.ApiClient(configuration) as api_client:
     metadata = 'metadata_example' # str |  (optional)
 
     try:
-        api_response = api_instance.upload_file(content=content, filename=filename, content_type=content_type, metadata=metadata)
+        api_response = await api_instance.upload_file(content=content, filename=filename, content_type=content_type, metadata=metadata)
         print("The response of ObjectStorageApi->upload_file:\n")
         pprint(api_response)
     except Exception as e:

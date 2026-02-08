@@ -17,40 +17,40 @@ import unittest
 from monday_code.api.object_storage_api import ObjectStorageApi
 
 
-class TestObjectStorageApi(unittest.TestCase):
+class TestObjectStorageApi(unittest.IsolatedAsyncioTestCase):
     """ObjectStorageApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = ObjectStorageApi()
 
-    def tearDown(self) -> None:
-        pass
+    async def asyncTearDown(self) -> None:
+        await self.api.api_client.close()
 
-    def test_delete_file(self) -> None:
+    async def test_delete_file(self) -> None:
         """Test case for delete_file
 
         """
         pass
 
-    def test_download_file(self) -> None:
+    async def test_download_file(self) -> None:
         """Test case for download_file
 
         """
         pass
 
-    def test_get_file_info(self) -> None:
+    async def test_get_file_info(self) -> None:
         """Test case for get_file_info
 
         """
         pass
 
-    def test_list_files(self) -> None:
+    async def test_list_files(self) -> None:
         """Test case for list_files
 
         """
         pass
 
-    def test_upload_file(self) -> None:
+    async def test_upload_file(self) -> None:
         """Test case for upload_file
 
         """
