@@ -12,6 +12,8 @@ Method | HTTP request | Description
 # **delete_secure_storage**
 > delete_secure_storage(key)
 
+
+
 ### Example
 
 
@@ -28,13 +30,13 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.SecureStorageApi(api_client)
     key = 'key_example' # str | 
 
     try:
-        api_instance.delete_secure_storage(key)
+        await api_instance.delete_secure_storage(key)
     except Exception as e:
         print("Exception when calling SecureStorageApi->delete_secure_storage: %s\n" % e)
 ```
@@ -72,6 +74,8 @@ No authorization required
 # **get_secure_storage**
 > JsonDataContract get_secure_storage(key)
 
+
+
 ### Example
 
 
@@ -89,13 +93,13 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.SecureStorageApi(api_client)
     key = 'key_example' # str | 
 
     try:
-        api_response = api_instance.get_secure_storage(key)
+        api_response = await api_instance.get_secure_storage(key)
         print("The response of SecureStorageApi->get_secure_storage:\n")
         pprint(api_response)
     except Exception as e:
@@ -136,6 +140,8 @@ No authorization required
 # **put_secure_storage**
 > bool put_secure_storage(key, json_data_contract)
 
+
+
 ### Example
 
 
@@ -153,14 +159,14 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.SecureStorageApi(api_client)
     key = 'key_example' # str | 
     json_data_contract = monday_code.JsonDataContract() # JsonDataContract | 
 
     try:
-        api_response = api_instance.put_secure_storage(key, json_data_contract)
+        api_response = await api_instance.put_secure_storage(key, json_data_contract)
         print("The response of SecureStorageApi->put_secure_storage:\n")
         pprint(api_response)
     except Exception as e:

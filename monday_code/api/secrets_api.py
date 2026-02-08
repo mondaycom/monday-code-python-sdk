@@ -38,7 +38,7 @@ class SecretsApi:
 
 
     @validate_call
-    def get_secret(
+    async def get_secret(
         self,
         name: StrictStr,
         _request_timeout: Union[
@@ -93,11 +93,11 @@ class SecretsApi:
             '200': "str",
             '404': "GetByKeyFromStorage404Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -105,7 +105,7 @@ class SecretsApi:
 
 
     @validate_call
-    def get_secret_with_http_info(
+    async def get_secret_with_http_info(
         self,
         name: StrictStr,
         _request_timeout: Union[
@@ -160,11 +160,11 @@ class SecretsApi:
             '200': "str",
             '404': "GetByKeyFromStorage404Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -172,7 +172,7 @@ class SecretsApi:
 
 
     @validate_call
-    def get_secret_without_preload_content(
+    async def get_secret_without_preload_content(
         self,
         name: StrictStr,
         _request_timeout: Union[
@@ -227,7 +227,7 @@ class SecretsApi:
             '200': "str",
             '404': "GetByKeyFromStorage404Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -298,7 +298,7 @@ class SecretsApi:
 
 
     @validate_call
-    def get_secret_keys(
+    async def get_secret_keys(
         self,
         _request_timeout: Union[
             None,
@@ -348,11 +348,11 @@ class SecretsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -360,7 +360,7 @@ class SecretsApi:
 
 
     @validate_call
-    def get_secret_keys_with_http_info(
+    async def get_secret_keys_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -410,11 +410,11 @@ class SecretsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -422,7 +422,7 @@ class SecretsApi:
 
 
     @validate_call
-    def get_secret_keys_without_preload_content(
+    async def get_secret_keys_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -472,7 +472,7 @@ class SecretsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[str]",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )

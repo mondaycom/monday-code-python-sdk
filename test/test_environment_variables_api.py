@@ -17,22 +17,22 @@ import unittest
 from monday_code.api.environment_variables_api import EnvironmentVariablesApi
 
 
-class TestEnvironmentVariablesApi(unittest.TestCase):
+class TestEnvironmentVariablesApi(unittest.IsolatedAsyncioTestCase):
     """EnvironmentVariablesApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = EnvironmentVariablesApi()
 
-    def tearDown(self) -> None:
+    async def asyncTearDown(self) -> None:
         pass
 
-    def test_get_environment_variable(self) -> None:
+    async def test_get_environment_variable(self) -> None:
         """Test case for get_environment_variable
 
         """
         pass
 
-    def test_get_environment_variable_keys(self) -> None:
+    async def test_get_environment_variable_keys(self) -> None:
         """Test case for get_environment_variable_keys
 
         """

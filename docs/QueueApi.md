@@ -11,6 +11,8 @@ Method | HTTP request | Description
 # **publish_message**
 > PublishMessageResponse publish_message(publish_message_params)
 
+
+
 ### Example
 
 
@@ -29,13 +31,13 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.QueueApi(api_client)
     publish_message_params = monday_code.PublishMessageParams() # PublishMessageParams | 
 
     try:
-        api_response = api_instance.publish_message(publish_message_params)
+        api_response = await api_instance.publish_message(publish_message_params)
         print("The response of QueueApi->publish_message:\n")
         pprint(api_response)
     except Exception as e:
@@ -75,6 +77,8 @@ No authorization required
 # **validate_secret**
 > ValidateSecretResponse validate_secret(validate_secret_params)
 
+
+
 ### Example
 
 
@@ -93,13 +97,13 @@ configuration = monday_code.Configuration(
 
 
 # Enter a context with an instance of the API client
-with monday_code.ApiClient(configuration) as api_client:
+async with monday_code.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = monday_code.QueueApi(api_client)
     validate_secret_params = monday_code.ValidateSecretParams() # ValidateSecretParams | 
 
     try:
-        api_response = api_instance.validate_secret(validate_secret_params)
+        api_response = await api_instance.validate_secret(validate_secret_params)
         print("The response of QueueApi->validate_secret:\n")
         pprint(api_response)
     except Exception as e:

@@ -17,40 +17,40 @@ import unittest
 from monday_code.api.storage_api import StorageApi
 
 
-class TestStorageApi(unittest.TestCase):
+class TestStorageApi(unittest.IsolatedAsyncioTestCase):
     """StorageApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = StorageApi()
 
-    def tearDown(self) -> None:
+    async def asyncTearDown(self) -> None:
         pass
 
-    def test_delete_by_key_from_storage(self) -> None:
+    async def test_delete_by_key_from_storage(self) -> None:
         """Test case for delete_by_key_from_storage
 
         """
         pass
 
-    def test_get_by_key_from_storage(self) -> None:
+    async def test_get_by_key_from_storage(self) -> None:
         """Test case for get_by_key_from_storage
 
         """
         pass
 
-    def test_increment_counter(self) -> None:
+    async def test_increment_counter(self) -> None:
         """Test case for increment_counter
 
         """
         pass
 
-    def test_search_record(self) -> None:
+    async def test_search_record(self) -> None:
         """Test case for search_record
 
         """
         pass
 
-    def test_upsert_by_key_from_storage(self) -> None:
+    async def test_upsert_by_key_from_storage(self) -> None:
         """Test case for upsert_by_key_from_storage
 
         """

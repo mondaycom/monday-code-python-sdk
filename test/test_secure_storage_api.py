@@ -17,28 +17,28 @@ import unittest
 from monday_code.api.secure_storage_api import SecureStorageApi
 
 
-class TestSecureStorageApi(unittest.TestCase):
+class TestSecureStorageApi(unittest.IsolatedAsyncioTestCase):
     """SecureStorageApi unit test stubs"""
 
-    def setUp(self) -> None:
+    async def asyncSetUp(self) -> None:
         self.api = SecureStorageApi()
 
-    def tearDown(self) -> None:
+    async def asyncTearDown(self) -> None:
         pass
 
-    def test_delete_secure_storage(self) -> None:
+    async def test_delete_secure_storage(self) -> None:
         """Test case for delete_secure_storage
 
         """
         pass
 
-    def test_get_secure_storage(self) -> None:
+    async def test_get_secure_storage(self) -> None:
         """Test case for get_secure_storage
 
         """
         pass
 
-    def test_put_secure_storage(self) -> None:
+    async def test_put_secure_storage(self) -> None:
         """Test case for put_secure_storage
 
         """

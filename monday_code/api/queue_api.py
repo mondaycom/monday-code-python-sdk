@@ -40,7 +40,7 @@ class QueueApi:
 
 
     @validate_call
-    def publish_message(
+    async def publish_message(
         self,
         publish_message_params: PublishMessageParams,
         _request_timeout: Union[
@@ -94,11 +94,11 @@ class QueueApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PublishMessageResponse",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -106,7 +106,7 @@ class QueueApi:
 
 
     @validate_call
-    def publish_message_with_http_info(
+    async def publish_message_with_http_info(
         self,
         publish_message_params: PublishMessageParams,
         _request_timeout: Union[
@@ -160,11 +160,11 @@ class QueueApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PublishMessageResponse",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -172,7 +172,7 @@ class QueueApi:
 
 
     @validate_call
-    def publish_message_without_preload_content(
+    async def publish_message_without_preload_content(
         self,
         publish_message_params: PublishMessageParams,
         _request_timeout: Union[
@@ -226,7 +226,7 @@ class QueueApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "PublishMessageResponse",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -310,7 +310,7 @@ class QueueApi:
 
 
     @validate_call
-    def validate_secret(
+    async def validate_secret(
         self,
         validate_secret_params: ValidateSecretParams,
         _request_timeout: Union[
@@ -364,11 +364,11 @@ class QueueApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ValidateSecretResponse",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -376,7 +376,7 @@ class QueueApi:
 
 
     @validate_call
-    def validate_secret_with_http_info(
+    async def validate_secret_with_http_info(
         self,
         validate_secret_params: ValidateSecretParams,
         _request_timeout: Union[
@@ -430,11 +430,11 @@ class QueueApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ValidateSecretResponse",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -442,7 +442,7 @@ class QueueApi:
 
 
     @validate_call
-    def validate_secret_without_preload_content(
+    async def validate_secret_without_preload_content(
         self,
         validate_secret_params: ValidateSecretParams,
         _request_timeout: Union[
@@ -496,7 +496,7 @@ class QueueApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ValidateSecretResponse",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
