@@ -24,7 +24,7 @@ class TestStorageApi(unittest.IsolatedAsyncioTestCase):
         self.api = StorageApi()
 
     async def asyncTearDown(self) -> None:
-        pass
+        await self.api.api_client.close()
 
     async def test_delete_by_key_from_storage(self) -> None:
         """Test case for delete_by_key_from_storage

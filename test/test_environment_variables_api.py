@@ -24,7 +24,7 @@ class TestEnvironmentVariablesApi(unittest.IsolatedAsyncioTestCase):
         self.api = EnvironmentVariablesApi()
 
     async def asyncTearDown(self) -> None:
-        pass
+        await self.api.api_client.close()
 
     async def test_get_environment_variable(self) -> None:
         """Test case for get_environment_variable

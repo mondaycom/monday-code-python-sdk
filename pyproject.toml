@@ -1,25 +1,30 @@
-[tool.poetry]
+[project]
 name = "monday_code"
-version = "2.0.0"
+version = "2.1.0"
 description = "mcode-sdk-api"
-authors = ["OpenAPI Generator Community <team@openapitools.org>"]
-license = "MIT"
+authors = [
+  {name = "OpenAPI Generator Community",email = "team@openapitools.org"},
+]
+license = { text = "MIT" }
 readme = "README.md"
-repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
 keywords = ["OpenAPI", "OpenAPI-Generator", "mcode-sdk-api"]
-include = ["monday_code/py.typed"]
+requires-python = ">=3.9"
 
-[tool.poetry.dependencies]
-python = "^3.8"
+dependencies = [
+  "python-dateutil (>=2.8.2)",
+  "aiohttp (>=3.8.4)",
+  "aiohttp-retry (>=2.8.3)",
+  "pydantic (>=2)",
+  "typing-extensions (>=4.7.1)",
+]
 
-urllib3 = ">= 1.25.3 < 3.0.0"
-python-dateutil = ">= 2.8.2"
-aiohttp = ">= 3.8.4"
-aiohttp-retry = ">= 2.8.3"
-pydantic = ">= 2"
-typing-extensions = ">= 4.7.1"
+[project.urls]
+Repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry]
+requires-poetry = ">=2.0"
+
+[tool.poetry.group.dev.dependencies]
 pytest = ">= 7.2.1"
 pytest-cov = ">= 2.8.1"
 tox = ">= 3.9.0"

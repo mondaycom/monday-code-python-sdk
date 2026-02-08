@@ -24,7 +24,7 @@ class TestLogsApi(unittest.IsolatedAsyncioTestCase):
         self.api = LogsApi()
 
     async def asyncTearDown(self) -> None:
-        pass
+        await self.api.api_client.close()
 
     async def test_write_log(self) -> None:
         """Test case for write_log

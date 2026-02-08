@@ -11,8 +11,6 @@ Method | HTTP request | Description
 # **get_environment_variable**
 > object get_environment_variable(name)
 
-
-
 ### Example
 
 
@@ -75,8 +73,6 @@ No authorization required
 
 # **get_environment_variable_keys**
 > List[str] get_environment_variable_keys()
-
-
 
 ### Example
 

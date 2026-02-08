@@ -24,7 +24,7 @@ class TestSecretsApi(unittest.IsolatedAsyncioTestCase):
         self.api = SecretsApi()
 
     async def asyncTearDown(self) -> None:
-        pass
+        await self.api.api_client.close()
 
     async def test_get_secret(self) -> None:
         """Test case for get_secret
