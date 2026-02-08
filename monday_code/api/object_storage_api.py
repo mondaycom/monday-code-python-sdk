@@ -43,7 +43,7 @@ class ObjectStorageApi:
 
 
     @validate_call
-    def delete_file(
+    async def delete_file(
         self,
         filename: StrictStr,
         _request_timeout: Union[
@@ -98,11 +98,11 @@ class ObjectStorageApi:
             '200': "DeleteFileResponse",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -110,7 +110,7 @@ class ObjectStorageApi:
 
 
     @validate_call
-    def delete_file_with_http_info(
+    async def delete_file_with_http_info(
         self,
         filename: StrictStr,
         _request_timeout: Union[
@@ -165,11 +165,11 @@ class ObjectStorageApi:
             '200': "DeleteFileResponse",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -177,7 +177,7 @@ class ObjectStorageApi:
 
 
     @validate_call
-    def delete_file_without_preload_content(
+    async def delete_file_without_preload_content(
         self,
         filename: StrictStr,
         _request_timeout: Union[
@@ -232,7 +232,7 @@ class ObjectStorageApi:
             '200': "DeleteFileResponse",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -303,7 +303,7 @@ class ObjectStorageApi:
 
 
     @validate_call
-    def download_file(
+    async def download_file(
         self,
         filename: StrictStr,
         _request_timeout: Union[
@@ -358,11 +358,11 @@ class ObjectStorageApi:
             '200': "DownloadFileResponse",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -370,7 +370,7 @@ class ObjectStorageApi:
 
 
     @validate_call
-    def download_file_with_http_info(
+    async def download_file_with_http_info(
         self,
         filename: StrictStr,
         _request_timeout: Union[
@@ -425,11 +425,11 @@ class ObjectStorageApi:
             '200': "DownloadFileResponse",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -437,7 +437,7 @@ class ObjectStorageApi:
 
 
     @validate_call
-    def download_file_without_preload_content(
+    async def download_file_without_preload_content(
         self,
         filename: StrictStr,
         _request_timeout: Union[
@@ -492,7 +492,7 @@ class ObjectStorageApi:
             '200': "DownloadFileResponse",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -563,7 +563,7 @@ class ObjectStorageApi:
 
 
     @validate_call
-    def get_file_info(
+    async def get_file_info(
         self,
         filename: StrictStr,
         _request_timeout: Union[
@@ -618,11 +618,11 @@ class ObjectStorageApi:
             '200': "GetFileInfoResponse",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -630,7 +630,7 @@ class ObjectStorageApi:
 
 
     @validate_call
-    def get_file_info_with_http_info(
+    async def get_file_info_with_http_info(
         self,
         filename: StrictStr,
         _request_timeout: Union[
@@ -685,11 +685,11 @@ class ObjectStorageApi:
             '200': "GetFileInfoResponse",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -697,7 +697,7 @@ class ObjectStorageApi:
 
 
     @validate_call
-    def get_file_info_without_preload_content(
+    async def get_file_info_without_preload_content(
         self,
         filename: StrictStr,
         _request_timeout: Union[
@@ -752,7 +752,7 @@ class ObjectStorageApi:
             '200': "GetFileInfoResponse",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -823,7 +823,7 @@ class ObjectStorageApi:
 
 
     @validate_call
-    def list_files(
+    async def list_files(
         self,
         prefix: Optional[StrictStr] = None,
         max_results: Optional[Union[StrictFloat, StrictInt]] = None,
@@ -886,11 +886,11 @@ class ObjectStorageApi:
             '200': "ListFilesResponse",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -898,7 +898,7 @@ class ObjectStorageApi:
 
 
     @validate_call
-    def list_files_with_http_info(
+    async def list_files_with_http_info(
         self,
         prefix: Optional[StrictStr] = None,
         max_results: Optional[Union[StrictFloat, StrictInt]] = None,
@@ -961,11 +961,11 @@ class ObjectStorageApi:
             '200': "ListFilesResponse",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -973,7 +973,7 @@ class ObjectStorageApi:
 
 
     @validate_call
-    def list_files_without_preload_content(
+    async def list_files_without_preload_content(
         self,
         prefix: Optional[StrictStr] = None,
         max_results: Optional[Union[StrictFloat, StrictInt]] = None,
@@ -1036,7 +1036,7 @@ class ObjectStorageApi:
             '200': "ListFilesResponse",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -1119,7 +1119,7 @@ class ObjectStorageApi:
 
 
     @validate_call
-    def upload_file(
+    async def upload_file(
         self,
         content: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         filename: Optional[StrictStr] = None,
@@ -1188,11 +1188,11 @@ class ObjectStorageApi:
             '400': "GetByKeyFromStorage404Response",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1200,7 +1200,7 @@ class ObjectStorageApi:
 
 
     @validate_call
-    def upload_file_with_http_info(
+    async def upload_file_with_http_info(
         self,
         content: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         filename: Optional[StrictStr] = None,
@@ -1269,11 +1269,11 @@ class ObjectStorageApi:
             '400': "GetByKeyFromStorage404Response",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -1281,7 +1281,7 @@ class ObjectStorageApi:
 
 
     @validate_call
-    def upload_file_without_preload_content(
+    async def upload_file_without_preload_content(
         self,
         content: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         filename: Optional[StrictStr] = None,
@@ -1350,7 +1350,7 @@ class ObjectStorageApi:
             '400': "GetByKeyFromStorage404Response",
             '500': "GetByKeyFromStorage500Response",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
