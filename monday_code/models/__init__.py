@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from monday_code.models.delete_file_response import DeleteFileResponse
 from monday_code.models.download_file_response import DownloadFileResponse
@@ -39,3 +38,4 @@ from monday_code.models.validate_secret_params import ValidateSecretParams
 from monday_code.models.validate_secret_response import ValidateSecretResponse
 from monday_code.models.write_log_request_body import WriteLogRequestBody
 from monday_code.models.write_log_request_body_error import WriteLogRequestBodyError
+

@@ -24,7 +24,7 @@ class TestQueueApi(unittest.IsolatedAsyncioTestCase):
         self.api = QueueApi()
 
     async def asyncTearDown(self) -> None:
-        pass
+        await self.api.api_client.close()
 
     async def test_publish_message(self) -> None:
         """Test case for publish_message

@@ -14,8 +14,6 @@ Method | HTTP request | Description
 # **delete_by_key_from_storage**
 > delete_by_key_from_storage(key, x_monday_access_token)
 
-
-
 ### Example
 
 
@@ -77,8 +75,6 @@ No authorization required
 
 # **get_by_key_from_storage**
 > StorageDataContract get_by_key_from_storage(key, shared, x_monday_access_token)
-
-
 
 ### Example
 
@@ -149,8 +145,6 @@ No authorization required
 # **increment_counter**
 > IncrementCounter200Response increment_counter(x_monday_access_token, increment_counter_params)
 
-
-
 ### Example
 
 
@@ -216,8 +210,6 @@ No authorization required
 
 # **search_record**
 > object search_record(term, x_monday_access_token, cursor=cursor)
-
-
 
 ### Example
 
@@ -286,8 +278,6 @@ No authorization required
 
 # **upsert_by_key_from_storage**
 > UpsertByKeyFromStorage200Response upsert_by_key_from_storage(key, x_monday_access_token, json_data_contract, shared=shared, previous_version=previous_version, ttl=ttl)
-
-
 
 ### Example
 

@@ -47,6 +47,11 @@ Class | Method | HTTP request | Description
 *EnvironmentVariablesApi* | [**get_environment_variable**](docs/EnvironmentVariablesApi.md#get_environment_variable) | **GET** /environment-variables/{name} | 
 *EnvironmentVariablesApi* | [**get_environment_variable_keys**](docs/EnvironmentVariablesApi.md#get_environment_variable_keys) | **GET** /environment-variables | 
 *LogsApi* | [**write_log**](docs/LogsApi.md#write_log) | **POST** /logs | 
+*ObjectStorageApi* | [**delete_file**](docs/ObjectStorageApi.md#delete_file) | **DELETE** /object-storage/files/{filename} | 
+*ObjectStorageApi* | [**download_file**](docs/ObjectStorageApi.md#download_file) | **GET** /object-storage/files/{filename} | 
+*ObjectStorageApi* | [**get_file_info**](docs/ObjectStorageApi.md#get_file_info) | **GET** /object-storage/files/{filename}/info | 
+*ObjectStorageApi* | [**list_files**](docs/ObjectStorageApi.md#list_files) | **GET** /object-storage/files | 
+*ObjectStorageApi* | [**upload_file**](docs/ObjectStorageApi.md#upload_file) | **POST** /object-storage/files | 
 *QueueApi* | [**publish_message**](docs/QueueApi.md#publish_message) | **POST** /queue | 
 *QueueApi* | [**validate_secret**](docs/QueueApi.md#validate_secret) | **POST** /queue/validate-secret | 
 *SecretsApi* | [**get_secret**](docs/SecretsApi.md#get_secret) | **GET** /secrets/{name} | 
@@ -63,18 +68,24 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [DeleteFileResponse](docs/DeleteFileResponse.md)
+ - [DownloadFileResponse](docs/DownloadFileResponse.md)
+ - [FileInfo](docs/FileInfo.md)
  - [GetByKeyFromStorage404Response](docs/GetByKeyFromStorage404Response.md)
  - [GetByKeyFromStorage500Response](docs/GetByKeyFromStorage500Response.md)
+ - [GetFileInfoResponse](docs/GetFileInfoResponse.md)
  - [IncrementCounter200Response](docs/IncrementCounter200Response.md)
  - [IncrementCounter200ResponseAnyOf](docs/IncrementCounter200ResponseAnyOf.md)
  - [IncrementCounter200ResponseAnyOf1](docs/IncrementCounter200ResponseAnyOf1.md)
  - [IncrementCounterParams](docs/IncrementCounterParams.md)
  - [JsonDataContract](docs/JsonDataContract.md)
+ - [ListFilesResponse](docs/ListFilesResponse.md)
  - [LogMethods](docs/LogMethods.md)
  - [Period](docs/Period.md)
  - [PublishMessageParams](docs/PublishMessageParams.md)
  - [PublishMessageResponse](docs/PublishMessageResponse.md)
  - [StorageDataContract](docs/StorageDataContract.md)
+ - [UploadFileResponse](docs/UploadFileResponse.md)
  - [UpsertByKeyFromStorage200Response](docs/UpsertByKeyFromStorage200Response.md)
  - [UpsertByKeyFromStorage200ResponseAnyOf](docs/UpsertByKeyFromStorage200ResponseAnyOf.md)
  - [UpsertByKeyFromStorage200ResponseAnyOf1](docs/UpsertByKeyFromStorage200ResponseAnyOf1.md)
@@ -82,4 +93,3 @@ Class | Method | HTTP request | Description
  - [ValidateSecretResponse](docs/ValidateSecretResponse.md)
  - [WriteLogRequestBody](docs/WriteLogRequestBody.md)
  - [WriteLogRequestBodyError](docs/WriteLogRequestBodyError.md)
-
